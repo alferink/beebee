@@ -13,81 +13,94 @@
         <li><a th:href="@{/beehive/}" th:text="#{beehive.plural.label}">Home</a></li>
         <li class="active" th:text="#{beehive.with.name.label(${beehive.name})}"></li>
     </ol>
-
-    <h1 th:text="#{beehive.with.name.label(${beehive.name})}"></h1>
 </header>
 
 <section layout:fragment="content">
 
-    <div class="toolbar" role="toolbar" aria-label="...">
-        <div class="btn-group" role="group" aria-label="...">
-            <a href="#"
-               th:href="@{'/beehive/edit/' + ${beehive.id} + '/'}"
-               class="btn btn-default"
-               th:text="#{default.button.edit.label}" ></a>
-        </div>
-    </div>
+    <div class="box">
+        <h3 th:text="#{beehive.with.name.label(${beehive.name})}"></h3>
 
-    <form action="/beehive/save" method="post">
-        <fieldset class="form">
-            <div class="form-group">
-                <label for="name" th:text="#{beehive.name.label}">Name</label>
-                <input id="name" name="name" class="form-control" readonly="readonly" th:value="${beehive.name}"/>
-            </div>
-            <div class="form-group">
-                <label for="created" th:text="#{beehive.created.label}">Created</label>
-                <input id="created" name="created" class="form-control" readonly="readonly"
-                       th:value="${{beehive.created}}"/>
-            </div>
-            <div class="form-group">
-                <label for="hiveType" th:text="#{beehive.hiveType.label}">Hive type</label>
-                <input id="hiveType" name="hiveType" class="form-control" readonly="readonly"
-                       th:value="#{'hiveType.' + ${beehive.hiveType} + '.label'}"/>
-            </div>
-        </fieldset>
-    </form>
-
-    <div class="toolbar" role="toolbar" aria-label="...">
-        <div class="btn-group" role="group" aria-label="...">
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="true">
-                    <span th:text="#{default.button.create.label}"></span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li th:each="actionType: ${T(de.alferink.bee.beehive.action.BeehiveActionType).values()}">
-                        <a href="#"
-                           th:href="@{'/beehive/' + ${beehive.id} + '/' + ${actionType.url} + '/create'}"
-                           th:text="#{${actionType.propertyName} + '.label'}"></a>
-                    </li>
-                </ul>
+        <div class="toolbar" role="toolbar" aria-label="...">
+            <div class="btn-group" role="group" aria-label="...">
+                <a href="#"
+                   th:href="@{'/beehive/edit/' + ${beehive.id} + '/'}"
+                   class="btn btn-default"
+                   th:text="#{default.button.edit.label}"></a>
             </div>
         </div>
+
+        <form action="/beehive/save" method="post">
+            <fieldset class="form">
+                <div class="form-group">
+                    <label for="name" th:text="#{beehive.name.label}">Name</label>
+                    <input id="name" name="name" class="form-control" readonly="readonly" th:value="${beehive.name}"/>
+                </div>
+                <div class="form-group">
+                    <label for="created" th:text="#{beehive.created.label}">Created</label>
+                    <input id="created" name="created" class="form-control" readonly="readonly"
+                           th:value="${{beehive.created}}"/>
+                </div>
+                <div class="form-group">
+                    <label for="hiveType" th:text="#{beehive.hiveType.label}">Hive type</label>
+                    <input id="hiveType" name="hiveType" class="form-control" readonly="readonly"
+                           th:value="#{'hiveType.' + ${beehive.hiveType} + '.label'}"/>
+                </div>
+                <div class="form-group">
+                    <label for="apiary" th:text="#{apiary.label}">Apiary</label>
+                    <input id="apiary" name="apiary" class="form-control" readonly="readonly"
+                           th:value="${beehive.apiary} ? ${beehive.apiary.name}"/>
+                </div>
+            </fieldset>
+        </form>
     </div>
 
-    <table class="table table-striped">
-        <tr>
-            <th>Datum</th>
-            <th>Name</th>
-            <th>-</th>
-        </tr>
-        <tbody>
-        <tr th:each="beehiveAction: ${beehive.beehiveActions}">
-            <td th:text="${{beehiveAction.date}}">
-            </td>
-            <td>
-                <a th:href="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/' + ${beehiveAction.id}}"
-                   th:text="#{${beehiveAction.actionType.propertyName} + '.label'}"></a>
-            </td>
-            <td>
-                <a th:href="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/edit/' + ${beehiveAction.id} + '/'}"
-                   class="btn btn-warning">Edit</a>
-            </td>
-        </tr>
-        </tbody>
+    <div class="box">
+        <h3 th:text="#{beehiveAction.plural.label}"></h3>
 
-    </table>
+
+        <div class="toolbar" role="toolbar" aria-label="...">
+            <div class="btn-group" role="group" aria-label="...">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="true">
+                        <span th:text="#{default.button.create.label}"></span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li th:each="actionType: ${T(de.alferink.bee.beehive.action.BeehiveActionType).values()}">
+                            <a href="#"
+                               th:href="@{'/beehive/' + ${beehive.id} + '/' + ${actionType.url} + '/create'}"
+                               th:text="#{${actionType.propertyName} + '.label'}"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Datum</th>
+                <th>Name</th>
+                <th>-</th>
+            </tr>
+            <tbody>
+            <tr th:each="beehiveAction: ${beehive.beehiveActions}">
+                <td th:text="${{beehiveAction.date}}">
+                </td>
+                <td>
+                    <a th:href="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/' + ${beehiveAction.id}}"
+                       th:text="#{${beehiveAction.actionType.propertyName} + '.label'}"></a>
+                </td>
+                <td>
+                    <a th:href="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/edit/' + ${beehiveAction.id} + '/'}"
+                       class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
 </section>
 
 </body>

@@ -24,6 +24,6 @@ class Apiary {
     @Size(min=1, max=255)
     String name
 
-//    @OneToMany(mappedBy = "apiary")
-//    List<Beehive> beehives
+    @OneToMany(mappedBy = "apiary")
+    List<Beehive> beehives
 }

@@ -14,18 +14,65 @@
         <li class="active" th:text="#{default.show.label(#{apiary.label})}"></li>
     </ol>
 
-    <h1 th:text="#{default.create.label(#{apiary.label})}"></h1>
+    <!--<h1 th:text="#{default.show.label(#{apiary.label})}"></h1>-->
 </header>
 
 <section layout:fragment="content">
-    <form action="/apiary/save" method="post">
-        <fieldset class="form">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input id="name" name="name" class="form-control" readonly="readonly" th:value="${apiary.name}" />
+
+    <div class="box">
+        <h3 th:text="#{default.show.label(#{apiary.label})}"></h3>
+
+        <div class="toolbar" role="toolbar" aria-label="...">
+            <div class="btn-group" role="group" aria-label="...">
+                <a href="#"
+                   th:href="@{'/apiary/edit/' + ${apiary.id} + '/'}"
+                   class="btn btn-default"
+                   th:text="#{default.button.edit.label}" ></a>
             </div>
-        </fieldset>
-    </form>
+        </div>
+
+        <form action="/apiary/save" method="post">
+            <fieldset class="form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" class="form-control" readonly="readonly" th:value="${apiary.name}" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="box">
+        <h3 th:text="#{beehive.plural.label}"></h3>
+        <div class="toolbar" role="toolbar" aria-label="...">
+            <div class="btn-group" role="group" aria-label="...">
+                <a href="#"
+                   th:href="@{/beehive/create/(apiary=${apiary.id})}"
+                   class="btn btn-default"
+                   th:text="#{default.create.label(#{beehive.label})}" ></a>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Anlegt</th>
+                <th>Beute</th>
+            </tr>
+            <tbody>
+            <tr th:each="beehive: ${apiary.beehives}">
+                <td>
+                    <a th:href="@{'/beehive/' + ${beehive.id} + '/'}"
+                       th:text="${beehive.name}"></a>
+                </td>
+                <td th:text="${{beehive.created}}">
+                </td>
+                <td th:text="${beehive.hiveType} ? #{'hiveType.' + ${beehive.hiveType} + '.label'}">
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
 </section>
 
 </body>

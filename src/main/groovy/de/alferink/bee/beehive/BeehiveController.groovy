@@ -1,5 +1,6 @@
 package de.alferink.bee.beehive
 
+import de.alferink.bee.apiary.ApiaryRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.propertyeditors.CustomDateEditor
 import org.springframework.stereotype.Controller
@@ -22,6 +23,9 @@ class BeehiveController {
     @Autowired
     BeehiveRepository beehiveRepository
 
+    @Autowired
+    ApiaryRepository apiaryRepository
+
     @RequestMapping(value = ["/", "index"])
     public String index(Model model) {
         model.addAttribute("beehives", beehiveRepository.findAll());
@@ -37,12 +41,14 @@ class BeehiveController {
     @RequestMapping(value = "create")
     public String create(Beehive beehive, ModelMap model) {
         model.addAttribute("beehive", beehive);
+        model.addAttribute("apiaries", apiaryRepository.findAll());
         return "beehive/create";
     }
 
     @RequestMapping(value = "save", method = RequestMethod.POST)
     public String save(@Valid Beehive beehive, BindingResult bindingResult, ModelMap model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("apiaries", apiaryRepository.findAll());
             return "beehive/create";
         }
 
@@ -53,12 +59,14 @@ class BeehiveController {
     @RequestMapping(value = "edit/{id}")
     public String edit(@PathVariable String id, Model model) {
         model.addAttribute("beehive", beehiveRepository.findOne(id));
+        model.addAttribute("apiaries", apiaryRepository.findAll());
         return "beehive/edit";
     }
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String update(@Valid Beehive beehive, BindingResult bindingResult) {
+    public String update(@Valid Beehive beehive, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("apiaries", apiaryRepository.findAll());
             return "beehive/edit";
         }
         beehiveRepository.save(beehive);

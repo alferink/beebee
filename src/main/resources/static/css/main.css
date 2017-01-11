@@ -31,3 +31,14 @@
 .br-theme-fontawesome-stars .br-widget a {
     font-size: 30px !important;
 }
+
+.box{
+    margin-bottom: 20px;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.box h3 {
+    margin-top: 0px;
+}

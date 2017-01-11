@@ -22,6 +22,16 @@
                         th:text="#{${'hiveType.' + type  + '.label'}}">Wireframe</option>
             </select>
         </div>
+        <div class="form-group">
+            <label th:for="beehive.apiary" th:text="#{apiary.label}">apiary</label>
+            <select class="form-control" th:field="*{apiary}">
+                <option value=""></option>
+                <option th:each="apiary : ${apiaries}"
+                        th:value="${apiary.id}"
+                        th:text="${apiary.name}">...
+                </option>
+            </select>
+        </div>
     </fieldset>
 </th:div>
 
