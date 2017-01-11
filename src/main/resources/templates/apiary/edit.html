@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<header layout:fragment="header">
+    <ol class="breadcrumb">
+        <li><a th:href="@{/apiary/}" th:text="#{apiary.plural.label}">Apiaries</a></li>
+        <li class="active" th:text="#{default.edit.label(#{apiary.label})}"></li>
+    </ol>
+
+    <h1 th:text="#{default.edit.label(#{apiary.label})}"></h1>
+</header>
+
+<section layout:fragment="content">
+    <form th:action="@{/apiary/update}"  th:object="${apiary}" method="post">
+        <div th:replace="fragments/commons :: errors">...</div>
+
+        <input type="hidden" name="id" th:field="*{id}"/>
+        <div th:replace="apiary/_form :: form">...</div>
+        <button type="submit" class="btn btn-primary" th:text="#{default.button.update.label}">Save</button>
+    </form>
+</section>
+
+</body>
+</html>

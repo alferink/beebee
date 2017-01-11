@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head id="headerFragment" th:fragment="headerFragment">
+</head>
+<body>
+
+<th:div th:fragment="form">
+    <fieldset class="form">
+        <div th:class="${#fields.hasErrors('name')}? 'form-group has-error' : 'form-group'">
+            <label class="control-label" th:for="name" th:text="#{beehive.name.label}">Name</label>
+            <input class="form-control" th:field="*{name}"/>
+        </div>
+        <div th:class="${#fields.hasErrors('created')}? 'form-group has-error' : 'form-group'">
+            <label class="control-label" th:for="created" th:text="#{beehive.created.label}">Created</label>
+            <input class="form-control" th:field="*{created}"/>
+        </div>
+        <div class="form-group">
+            <label th:for="hiveType" th:text="#{beehive.hiveType.label}">Hive type</label>
+            <select class="form-control" th:field="*{hiveType}">
+                <option th:each="type : ${T(de.alferink.bee.beehive.HiveType).values()}"
+                        th:value="${type}"
+                        th:text="#{${'hiveType.' + type  + '.label'}}">Wireframe</option>
+            </select>
+        </div>
+    </fieldset>
+</th:div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head id="headerFragment" th:fragment="headerFragment">
+</head>
+<body>
+<div class="container">
+
+    <th:block th:fragment="errors">
+        <div th:if="${#fields.hasErrors('*')}">
+            <span th:text="#{default.has.errors.message}"></span>
+            <ul>
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+            </ul>
+        </div>
+    </th:block>
+
+    <th:block th:fragment="panel">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Header
+            </div>
+            <div class="panel-body">
+                <th:block th:fragment="panel-body">
+                    <p>Default panel content</p>
+                </th:block>
+            </div>
+
+            <div class="panel-footer">
+                Footer
+            </div>
+        </div>
+    </th:block>
+
+    <th:block layout:fragment="alert">
+        <div class="alert alert-dismissable" th:classappend="'alert-' + ${type}">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4 th:text="${header}">Alert header</h4>
+            <!--/* 'layout:fragment' attribute defines a replaceable content section */-->
+            <th:block layout:fragment="alert-content">
+                <p>Default alert content</p>
+            </th:block>
+        </div>
+    </th:block>
+</div>
+</body>
+</html>

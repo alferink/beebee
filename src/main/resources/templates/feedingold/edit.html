@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<header layout:fragment="header">
+    <ol class="breadcrumb">
+        <li><a th:href="@{/beehive/}" th:text="#{beehive.plural.label}">Home</a></li>
+        <li class="active" th:text="#{default.edit.label(#{beehive.label})}"></li>
+    </ol>
+
+    <h1 th:text="#{default.edit.label(#{beehive.label})}"></h1>
+</header>
+
+<section layout:fragment="content">
+    <form action="/beehive/save" method="post">
+        <input type="hidden" name="id" th:value="${beehive.id}"/>
+        <fieldset class="form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" name="name" class="form-control" th:value="${beehive.name}"/>
+            </div>
+            <div class="form-group">
+                <label for="created">created</label>
+                <input id="created" name="created" class="form-control" th:value="${beehive.created}"/>
+            </div>
+            <div class="form-group">
+                <label for="hiveType">hiveType</label>
+                <input id="hiveType" name="hiveType" class="form-control" th:value="${beehive.hiveType}"/>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Speichern</button>
+    </form>
+</section>
+
+</body>
+</html>

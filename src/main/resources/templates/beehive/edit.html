@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<header layout:fragment="header">
+    <ol class="breadcrumb">
+        <li><a th:href="@{/beehive/}" th:text="#{beehive.plural.label}">Home</a></li>
+        <li class="active" th:text="#{default.edit.label(#{beehive.label})}"></li>
+    </ol>
+
+    <h1 th:text="#{default.edit.label(#{beehive.label})}"></h1>
+</header>
+
+<section layout:fragment="content">
+    <form th:action="@{/beehive/update}" th:object="${beehive}" method="post">
+        <div th:replace="fragments/commons :: errors">...</div>
+
+        <input type="hidden" th:field="*{id}"/>
+        <div th:replace="beehive/_form :: form">...</div>
+        <button type="submit" class="btn btn-primary" th:text="#{default.button.update.label}">Save</button>
+    </form>
+</section>
+
+</body>
+</html>

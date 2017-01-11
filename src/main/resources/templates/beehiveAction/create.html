@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head th:replace="layout :: site-head">
+    <title>Getting Started: Serving Web Content</title>
+</head>
+<body>
+
+<nav th:replace="layout :: site-header"/>
+
+<header layout:fragment="header">
+    <ol class="breadcrumb">
+        <li><a th:href="@{/beehive/}" th:text="#{beehive.plural.label}">Beehives</a></li>
+        <li><a th:href="@{'/beehive/' + ${beehiveAction.beehive.id}+ '/'}" th:text="#{beehive.with.name.label(${beehiveAction.beehive.name})}">Beehive</a></li>
+        <li class="active" th:text="#{default.create.label(#{${beehiveAction.actionType.propertyName} + '.label'})}"></li>
+    </ol>
+    <h1 th:text="#{default.create.label(#{${beehiveAction.actionType.propertyName} + '.label'})}"></h1>
+</header>
+
+<section layout:fragment="content">
+    <form th:action="@{'/beehive/' + ${beehiveAction.beehive.id} + '/' + ${beehiveAction.actionType.url} + '/save'}"
+          th:object="${beehiveAction}"
+          method="post">
+        <div th:replace="fragments/commons :: errors">...</div>
+
+        <input type="hidden" th:field="*{beehive}"/>
+        <div th:replace="beehiveAction/_form :: common">...</div>
+        <button type="submit" class="btn btn-primary" th:text="#{default.button.save.label}">Save</button>
+    </form>
+</section>
+
+</body>
+</html>

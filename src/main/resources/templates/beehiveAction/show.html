@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head th:replace="layout :: site-head">
+    <title>Getting Started: Serving Web Content</title>
+</head>
+<body>
+
+<nav th:replace="layout :: site-header"/>
+
+<header layout:fragment="header">
+    <ol class="breadcrumb">
+        <li><a th:href="@{/beehive/}" th:text="#{beehive.plural.label}">Beehives</a></li>
+        <li><a th:href="@{'/beehive/' + ${beehiveAction.beehive.id}+ '/'}" th:text="#{beehive.with.name.label(${beehiveAction.beehive.name})}">Beehive</a></li>
+        <li class="active" th:text="#{default.create.label(#{${beehiveAction.actionType.propertyName} + '.label'})}"></li>
+    </ol>
+    <h1 th:text="#{default.create.label(#{${beehiveAction.actionType.propertyName} + '.label'})}"></h1>
+</header>
+
+<section layout:fragment="content">
+
+    <fieldset class="form">
+        <div class="form-group">
+            <label class="control-label" for="date" th:text="#{beehiveAction.date.label}">Date</label>
+            <input id="date" name="date" class="form-control" readonly="readonly" th:value="${{beehiveAction.date}}" />
+        </div>
+        <div th:replace="beehiveAction/_show :: ${beehiveAction.actionType.propertyName}">...</div>
+        <div class="form-group">
+            <label class="control-label" for="notes" th:text="#{beehiveAction.notes.label}">Notes</label>
+            <textarea id="notes" name="notes" class="form-control" readonly="readonly" th:value="${{beehiveAction.notes}}" rows="3"/>
+        </div>
+    </fieldset>
+</section>
+
+</body>
+</html>

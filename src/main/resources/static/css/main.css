@@ -1,0 +1,33 @@
+.page-title > li > .breadcrumb {
+    margin-bottom: 0px;
+    padding-left: 0px;
+    background-color: transparent !important;
+}
+
+.page-title > li > h1 {
+    margin-top: 0px;
+}
+
+.form-inline {
+    display: inline;
+}
+.icon-alert {
+    color: #b94a48;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav > li > form > button {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border: 0px;
+    }
+}
+
+.toolbar {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.br-theme-fontawesome-stars .br-widget a {
+    font-size: 30px !important;
+}

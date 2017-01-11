@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+
+<head th:replace="layout :: site-head">
+    <title>Getting Started: Serving Web Content</title>
+</head>
+<body>
+<nav th:replace="layout :: site-header"/>
+
+<section layout:fragment="content">
+    Startseite
+
+    <p>Get your greeting <a href="/apiary/">Stände</a></p>
+</section>
+
+</body>
+</html>

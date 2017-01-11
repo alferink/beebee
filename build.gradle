@@ -29,10 +29,25 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.springframework.data:spring-data-rest-hal-browser')
+//	compile('org.flywaydb:flyway-core')
+//	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.springframework.boot:spring-boot-devtools")
+//    compile("org.springframework.data:spring-data-rest-webmvc:2.5.6.RELEASE")
 	compile('org.codehaus.groovy:groovy')
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+
+	// webjars
+	compile 'org.webjars:jquery:3.1.1-1'
+	compile 'org.webjars:bootstrap:3.3.7-1'
+	compile 'org.webjars:typeaheadjs:0.11.1'
+	compile ('org.webjars:bootstrap-tagsinput:0.6.1') {
+		exclude(group:'org.webjars', module: 'bootstrap')
+	}
+	compile 'org.webjars:font-awesome:4.7.0'
 }

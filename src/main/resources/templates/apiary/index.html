@@ -1,0 +1,55 @@
+<!--<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>-->
+<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">>
+
+<head th:replace="layout :: site-head">
+    <title>Welcome to Spring MVC Blog</title>
+</head>
+<body>
+
+<nav th:replace="layout :: site-header"/>
+
+<header layout:fragment="header">
+    <ol class="breadcrumb">
+        <li class="active" th:text="#{apiary.plural.label}">Apiaries</li>
+    </ol>
+    <h1 th:text="#{apiary.plural.label}"></h1>
+</header>
+
+<section layout:fragment="content">
+
+
+    <div class="toolbar" role="toolbar" aria-label="...">
+        <div class="btn-group" role="group" aria-label="...">
+            <a href="#"
+               th:href="@{/apiary/create}"
+               class="btn btn-default"
+               th:text="#{default.button.create.label}" ></a>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>-</th>
+        </tr>
+        <tbody>
+        <tr th:each="apiary: ${apiaries}">
+            <td>
+                <a th:href="@{'/apiary/' + ${apiary.id}}"
+                   th:text="${apiary.name}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{'/apiary/edit/' + ${apiary.id}}"
+                   class="btn btn-warning"
+                   th:text="#{default.button.edit.label}">Edit</a></td>
+        </tr>
+        </tbody>
+
+    </table>
+</section>
+
+</body>
+</html>

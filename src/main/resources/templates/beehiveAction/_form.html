@@ -1,0 +1,324 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head id="headerFragment" th:fragment="headerFragment">
+</head>
+<body>
+
+<div th:fragment="common">
+    <fieldset class="form">
+        <div th:class="${#fields.hasErrors('date')}? 'form-group has-error' : 'form-group'">
+            <label class="control-label" th:for="date" th:text="#{beehiveAction.date.label}">Date</label>
+            <input class="form-control" th:field="*{date}"/>
+        </div>
+
+        <div th:replace="beehiveAction/_form :: ${beehiveAction.actionType.propertyName}">...</div>
+
+        <div th:class="${#fields.hasErrors('notes')}? 'form-group has-error' : 'form-group'">
+            <label class="control-label" th:for="notes" th:text="#{beehiveAction.notes.label}">Notes</label>
+            <textarea class="form-control" th:field="*{notes}" rows="3"/>
+        </div>
+    </fieldset>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <fieldset class="form" th:if="${beehiveAction.rating}">
+                <legend><input type="checkbox" th:field="*{rating.enabled}"/> Rating</legend>
+                <div th:class="${#fields.hasErrors('rating.egg')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="rating.egg" th:text="#{rating.egg.label}">Egg</label>
+                    <select class="form-control rating" th:field="*{rating.egg}">
+                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                    </select>
+                </div>
+                <div th:class="${#fields.hasErrors('rating.larva')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="rating.larva" th:text="#{rating.larva.label}">Larva</label>
+                    <select class="form-control rating" th:field="*{rating.larva}">
+                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                    </select>
+                </div>
+                <div th:class="${#fields.hasErrors('rating.cellCapped')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="rating.cellCapped"
+                           th:text="#{rating.cellCapped.label}">Notes</label>
+                    <select class="form-control rating" th:field="*{rating.cellCapped}">
+                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                    </select>
+                </div>
+                <div th:class="${#fields.hasErrors('rating.wabensitz')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="rating.wabensitz"
+                           th:text="#{rating.wabensitz.label}">Notes</label>
+                    <select class="form-control rating" th:field="*{rating.wabensitz}">
+                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                    </select>
+                </div>
+                <div th:class="${#fields.hasErrors('rating.sanftmut')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="rating.sanftmut"
+                           th:text="#{rating.sanftmut.label}">Notes</label>
+                    <select class="form-control rating" th:field="*{rating.sanftmut}">
+                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                    </select>
+                </div>
+                <div th:class="${#fields.hasErrors('rating.volksstaerke')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="rating.volksstaerke"
+                           th:text="#{rating.volksstaerke.label}">Notes</label>
+                    <select class="form-control rating" th:field="*{rating.volksstaerke}">
+                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                    </select>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-sm-6">
+            <fieldset class="form" th:if="${beehiveAction.addRemove}">
+                <legend><input type="checkbox" th:field="*{addRemove.enabled}"/> Add/Remove</legend>
+                <div th:class="${#fields.hasErrors('addRemove.broodChamberAdded')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="addRemove.broodChamberAdded"
+                           th:text="#{addRemove.broodChamber.label}">broodChamber</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">+</span>
+                        <input class="form-control" th:field="*{addRemove.broodChamberAdded}" type="number" min="0"
+                               step="1"/>
+                        <span class="input-group-addon">-</span>
+                        <input class="form-control" th:field="*{addRemove.broodChamberRemoved}" type="number" min="0"
+                               step="1"/>
+                    </div>
+                </div>
+                <div th:class="${#fields.hasErrors('addRemove.honeyChamberAdded')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="addRemove.honeyChamberAdded"
+                           th:text="#{addRemove.honeyChamber.label}">honeyChamber</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">+</span>
+                        <input class="form-control" th:field="*{addRemove.honeyChamberAdded}" type="number" min="0"
+                               step="1"/>
+                        <span class="input-group-addon">-</span>
+                        <input class="form-control" th:field="*{addRemove.honeyChamberRemoved}" type="number" min="0"
+                               step="1"/>
+                    </div>
+                </div>
+                <div th:class="${#fields.hasErrors('addRemove.mittelwaendeAdded')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="addRemove.mittelwaendeAdded"
+                           th:text="#{addRemove.mittelwaende.label}">mittelwaende</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">+</span>
+                        <input class="form-control" th:field="*{addRemove.mittelwaendeAdded}" type="number" min="0"
+                               step="1"/>
+                        <span class="input-group-addon">-</span>
+                        <input class="form-control" th:field="*{addRemove.mittelwaendeRemoved}" type="number" min="0"
+                               step="1"/>
+                    </div>
+                </div>
+                <div th:class="${#fields.hasErrors('addRemove.leerwabenAdded')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="addRemove.leerwaben"
+                           th:text="#{addRemove.leerwaben.label}">leerwaben</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">+</span>
+                        <input class="form-control" th:field="*{addRemove.leerwabenAdded}" type="number" min="0"
+                               step="1"/>
+                        <span class="input-group-addon">-</span>
+                        <input class="form-control" th:field="*{addRemove.leerwabenRemoved}" type="number" min="0"
+                               step="1"/>
+                    </div>
+                </div>
+                <div th:class="${#fields.hasErrors('addRemove.brutwabenAdded')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="addRemove.brutwabenAdded"
+                           th:text="#{addRemove.brutwaben.label}">brutwaben</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">+</span>
+                        <input class="form-control" th:field="*{addRemove.brutwabenAdded}" type="number" min="0"
+                               step="1"/>
+                        <span class="input-group-addon">-</span>
+                        <input class="form-control" th:field="*{addRemove.brutwabenRemoved}" type="number" min="0"
+                               step="1"/>
+                    </div>
+                </div>
+                <div th:class="${#fields.hasErrors('addRemove.futterwabenAdded')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="addRemove.futterwabenAdded"
+                           th:text="#{addRemove.futterwaben.label}">futterwaben</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">+</span>
+                        <input class="form-control" th:field="*{addRemove.futterwabenAdded}" type="number" min="0"
+                               step="1"/>
+                        <span class="input-group-addon">-</span>
+                        <input class="form-control" th:field="*{addRemove.futterwabenRemoved}" type="number" min="0"
+                               step="1"/>
+                    </div>
+                </div>
+                <div th:class="${#fields.hasErrors('addRemove.drohnenwabenAdded')}? 'form-group has-error' : 'form-group'">
+                    <label class="control-label" th:for="addRemove.drohnenwabenAdded"
+                           th:text="#{addRemove.drohnenwaben.label}">drohnenwaben</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">+</span>
+                        <input class="form-control" th:field="*{addRemove.drohnenwabenAdded}" type="number" min="0"
+                               step="1"/>
+                        <span class="input-group-addon">-</span>
+                        <input class="form-control" th:field="*{addRemove.drohnenwabenRemoved}" type="number" min="0"
+                               step="1"/>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        $(document).ready(function () {
+            $.each([$("#rating\\.enabled1"), $("#addRemove\\.enabled1")], function (i, val) {
+                toggleFormGroups(val);
+                val.change(function () {
+                    toggleFormGroups(this);
+                });
+            })
+
+            function toggleFormGroups(checkbox) {
+                var enabled = $(checkbox).prop('checked');
+                var formGroup = $(checkbox).closest('fieldset').find('.form-group')
+                if (enabled) {
+                    formGroup.show();
+                } else {
+                    formGroup.hide();
+                }
+            }
+        });
+        /*]]>*/
+    </script>
+</div>
+
+<div th:fragment="feeding">
+    <div class="form-group">
+        <label th:for="feed" th:text="#{feeding.feed.label}">Feed</label>
+        <select class="form-control" th:field="*{feed}">
+            <option th:each="beeFeed : ${T(de.alferink.bee.beehive.BeeFeed).values()}"
+                    th:value="${beeFeed}"
+                    th:text="#{${'beeFeed.' + beeFeed  + '.label'}}">...
+            </option>
+        </select>
+    </div>
+
+    <div th:class="${#fields.hasErrors('quantity')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="quantity" th:text="#{feeding.quantity.label}">Quantity</label>
+        <input class="form-control" th:field="*{quantity}"/>
+    </div>
+</div>
+
+<div th:fragment="honeyHarvest">
+    <div class="form-group">
+        <label th:for="honeyType" th:text="#{honeyHarvest.honeyType.label}">honeyType</label>
+        <select class="form-control" th:field="*{honeyType}">
+            <option th:each="honeyType : ${T(de.alferink.bee.beehive.HoneyType).values()}"
+                    th:value="${honeyType}"
+                    th:text="#{${'honeyType.' + honeyType  + '.label'}}">...
+            </option>
+        </select>
+    </div>
+    <div th:class="${#fields.hasErrors('quantity')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="quantity" th:text="#{honeyHarvest.quantity.label}">Quantity</label>
+        <input class="form-control" th:field="*{quantity}"/>
+    </div>
+    <div th:class="${#fields.hasErrors('waterContent')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="waterContent" th:text="#{honeyHarvest.waterContent.label}">Water
+            content</label>
+        <input class="form-control" th:field="*{waterContent}"/>
+    </div>
+</div>
+
+<div th:fragment="review">
+    <fieldset class="form">
+    </fieldset>
+</div>
+
+<div th:fragment="varroaCheck">
+    <div th:class="${#fields.hasErrors('quantity')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="quantity" th:text="#{varroaCheck.quantity.label}">Quantity</label>
+        <input class="form-control" th:field="*{quantity}"/>
+    </div>
+    <div th:class="${#fields.hasErrors('days')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="days" th:text="#{varroaCheck.days.label}">Days</label>
+        <input class="form-control" th:field="*{days}"/>
+    </div>
+</div>
+
+<div th:fragment="varroaTreatment">
+    <div class="form-group">
+        <label th:for="medicine" th:text="#{varroaTreatment.medicine.label}">Medicine</label>
+        <select class="form-control" th:field="*{medicine}">
+            <option th:each="treatmentDrug : ${T(de.alferink.bee.beehive.VarroaTreatmentDrug).values()}"
+                    th:value="${treatmentDrug}"
+                    th:text="#{${'varroaTreatmentDrug.' + treatmentDrug  + '.label'}}">...
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="method" th:text="#{varroaTreatment.method.label}">Medicine</label>
+        <select class="form-control" th:field="*{method}">
+            <option th:each="treatmentType : ${T(de.alferink.bee.beehive.VarroaTreatmentType).values()}"
+                    th:value="${treatmentType}"
+                    th:text="#{${'varroaTreatmentType.' + treatmentType  + '.label'}}">...
+            </option>
+        </select>
+    </div>
+    <div th:class="${#fields.hasErrors('quantity')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="quantity" th:text="#{varroaTreatment.quantity.label}">Quantity</label>
+        <input class="form-control" th:field="*{quantity}"/>
+    </div>
+    <div th:class="${#fields.hasErrors('lotNumber')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="lotNumber" th:text="#{varroaTreatment.lotNumber.label}">Lot
+            number</label>
+        <input class="form-control" th:field="*{lotNumber}"/>
+    </div>
+</div>
+
+<div th:fragment="queenInstallation">
+    <div th:class="${#fields.hasErrors('queen')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="queen.year" th:text="#{queen.year.label}">year</label>
+        <input class="form-control" th:field="*{queen.year}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="queen.color" th:text="#{queen.color.label}">Medicine</label>
+        <select class="form-control" th:field="*{queen.color}">
+            <option th:each="color : ${T(de.alferink.bee.beehive.QueenColor).values()}"
+                    th:value="${color}"
+                    th:text="#{${'queenColor.' + color  + '.label'}}">...
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="queen.color" th:text="#{queen.breed.label}">Medicine</label>
+        <select class="form-control" th:field="*{queen.breed}">
+            <option th:each="breed : ${T(de.alferink.bee.beehive.BeeBreed).values()}"
+                    th:value="${breed}"
+                    th:text="#{${'beeBreed.' + breed  + '.label'}}">...
+            </option>
+        </select>
+    </div>
+    <div th:class="${#fields.hasErrors('queen')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="queen.zeichen" th:text="#{queen.zeichen.label}">year</label>
+        <input class="form-control" th:field="*{queen.zeichen}"/>
+    </div>
+    <div th:class="${#fields.hasErrors('queen')}? 'form-group has-error' : 'form-group'">
+        <label class="control-label" th:for="queen.belegstelle" th:text="#{queen.belegstelle.label}">year</label>
+        <input class="form-control" th:field="*{queen.belegstelle}"/>
+    </div>
+</div>
+
+<div th:fragment="moveBeehive">
+    <fieldset class="form">
+    </fieldset>
+
+    <div class="form-group">
+        <label th:for="noveBeehive.moveTo" th:text="#{noveBeehive.moveTo.label}">moveTo</label>
+        <select class="form-control" th:field="*{moveTo}">
+            <option th:each="apiary : ${apiaries}"
+                    th:value="${apiary.id}"
+                    th:text="${apiary.name}">...
+            </option>
+        </select>
+    </div>
+</div>
+
+<div th:fragment="rating-options">
+    <option value="">keine Angabe</option>
+    <option value="1">gering bis fehlend</option>
+    <option value="2">mäßig</option>
+    <option value="3">viel (befriedigend)</option>
+    <option value="4">sehr viel (gut)</option>
+</div>
+
+</body>
+</html>

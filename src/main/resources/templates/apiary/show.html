@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head th:replace="layout :: site-head">
+    <title>Getting Started: Serving Web Content</title>
+</head>
+<body>
+
+<nav th:replace="layout :: site-header"/>
+
+<header layout:fragment="header">
+    <ol class="breadcrumb">
+        <li><a th:href="@{/apiary/}" th:text="#{apiary.plural.label}">Home</a></li>
+        <li class="active" th:text="#{default.show.label(#{apiary.label})}"></li>
+    </ol>
+
+    <h1 th:text="#{default.create.label(#{apiary.label})}"></h1>
+</header>
+
+<section layout:fragment="content">
+    <form action="/apiary/save" method="post">
+        <fieldset class="form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" name="name" class="form-control" readonly="readonly" th:value="${apiary.name}" />
+            </div>
+        </fieldset>
+    </form>
+</section>
+
+</body>
+</html>
