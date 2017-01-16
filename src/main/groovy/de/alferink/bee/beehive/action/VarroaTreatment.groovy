@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull
 
 @CompileStatic
 @Entity
-class VarroaTreatment extends BeehiveAction {
+class VarroaTreatment extends ChangeBeehiveAction {
 
     @NotNull
     VarroaTreatmentDrug medicine

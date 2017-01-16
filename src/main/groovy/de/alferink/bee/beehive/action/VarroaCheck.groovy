@@ -1,6 +1,5 @@
 package de.alferink.bee.beehive.action
 
-import de.alferink.bee.BaseEntity
 import groovy.transform.CompileStatic
 
 import javax.persistence.Entity
@@ -10,7 +9,7 @@ import javax.validation.constraints.NotNull
 
 @CompileStatic
 @Entity
-class VarroaCheck extends BeehiveAction {
+class VarroaCheck extends ChangeBeehiveAction {
 
     @NotNull
     @Min(0L)

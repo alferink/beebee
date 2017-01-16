@@ -7,7 +7,7 @@ import javax.persistence.Transient
 
 @CompileStatic
 @Entity
-class Review extends BeehiveAction {
+class Review extends ChangeBeehiveAction {
 
     Review() {
         rating.enabled = true

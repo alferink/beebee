@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull
 
 @CompileStatic
 @Entity
-class Feeding extends BeehiveAction {
+class Feeding extends ChangeBeehiveAction {
 
     @NotNull
     BeeFeed feed // KAT

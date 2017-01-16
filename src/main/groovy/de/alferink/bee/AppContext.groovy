@@ -1,16 +1,22 @@
 package de.alferink.bee
 
+import org.springframework.beans.BeansException
 import org.springframework.context.ApplicationContext
+import org.springframework.context.ApplicationContextAware
+import org.springframework.stereotype.Component
 import org.springframework.web.context.ContextLoader
 
-class AppContext {
+@Component
+class AppContext implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext
 
-    public ApplicationContext getApplicationContext() {
-        if(applicationContext == null) {
-            applicationContext = ContextLoader.currentWebApplicationContext
-        }
+    public void setApplicationContext(final ApplicationContext context)
+            throws BeansException {
+        applicationContext = context;
+    }
+
+    static ApplicationContext getApplicationContext() {
         applicationContext
     }
 }

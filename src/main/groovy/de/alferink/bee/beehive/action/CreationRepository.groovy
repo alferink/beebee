@@ -2,8 +2,9 @@ package de.alferink.bee.beehive.action
 
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.rest.core.annotation.RepositoryRestResource
+import org.springframework.stereotype.Repository
 
-@RepositoryRestResource(collectionResourceRel = "beehiveAction", path = "beehiveAction")
-interface BeehiveActionRepository extends PagingAndSortingRepository<ChangeBeehiveAction, String> {
+@Repository
+interface CreationRepository extends PagingAndSortingRepository<Creation, String> {
 
 }

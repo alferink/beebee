@@ -99,5 +99,12 @@
     </div>
 </div>
 
+<div th:fragment="creation">
+    <div class="form-group">
+        <label class="control-label" th:for="moveTo" th:text="#{apiary.label}">moveTo</label>
+        <input id="apiary" class="form-control" readonly="readonly" th:value="${beehiveAction.apiary} ? ${beehiveAction.apiary.name}"/>
+    </div>
+</div>
+
 </body>
 </html>

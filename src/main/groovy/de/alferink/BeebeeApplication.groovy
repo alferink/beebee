@@ -28,6 +28,6 @@ class BeebeeApplication extends WebMvcConfigurerAdapter {
 
     @Bean
     public DateFormatter dateFormatter() {
-        return new DateFormatter();
+        return new DateFormatter('dd.MM.yyyy');
     }
 }

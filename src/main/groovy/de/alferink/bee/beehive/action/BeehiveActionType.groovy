@@ -9,16 +9,21 @@ enum BeehiveActionType {
     VARROA_TREATMENT(VarroaTreatment, 'varroaTreatment'),
     QUEEN_INSTALLATION(QueenInstallation, 'queenInstallation'),
     MOVE_BEEHIVE(MoveBeehive, 'moveBeehive'),
+    CREATION(MoveBeehive, 'creation')
 
-    final Class<? extends BeehiveAction> actionClass
+    final Class<? extends ChangeBeehiveAction> actionClass
     final String propertyName
 
-    BeehiveActionType(Class<? extends BeehiveAction> actionClass, String propertyName) {
+    BeehiveActionType(Class<? extends ChangeBeehiveAction> actionClass, String propertyName) {
         this.actionClass = actionClass
         this.propertyName = propertyName
     }
 
     String getUrl() {
         propertyName.toLowerCase()
+    }
+
+    static List<BeehiveActionType> getChangeBeehiveActionType() {
+        values() - CREATION
     }
 }

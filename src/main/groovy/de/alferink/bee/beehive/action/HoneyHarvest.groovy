@@ -1,6 +1,5 @@
 package de.alferink.bee.beehive.action
 
-import de.alferink.bee.BaseEntity
 import de.alferink.bee.beehive.HoneyType
 import groovy.transform.CompileStatic
 
@@ -11,7 +10,7 @@ import javax.validation.constraints.NotNull
 
 @CompileStatic
 @Entity
-class HoneyHarvest extends BeehiveAction {
+class HoneyHarvest extends ChangeBeehiveAction {
 
     @NotNull
     HoneyType honeyType // sorte
