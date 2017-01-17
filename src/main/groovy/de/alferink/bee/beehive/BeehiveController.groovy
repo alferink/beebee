@@ -1,6 +1,7 @@
 package de.alferink.bee.beehive
 
 import de.alferink.bee.apiary.ApiaryRepository
+import de.alferink.bee.beehive.statistic.BeehiveStatisticService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 
 import javax.validation.Valid
+import java.time.LocalDate
 
 @Controller
 @RequestMapping(value = '/beehive')
@@ -22,6 +24,9 @@ class BeehiveController {
     @Autowired
     ApiaryRepository apiaryRepository
 
+    @Autowired
+    BeehiveStatisticService beehiveStatisticService
+
     @RequestMapping(value = ["/", "index"])
     public String index(Model model) {
         model.addAttribute("beehives", beehiveRepository.findAll());
@@ -30,7 +35,12 @@ class BeehiveController {
 
     @RequestMapping(value = "{id}")
     public String show(@PathVariable String id, Model model) {
-        model.addAttribute("beehive", beehiveRepository.findOne(id));
+        int currentYear = LocalDate.now().year
+
+        Beehive beehive = beehiveRepository.findOne(id)
+        model.addAttribute("beehive", beehive);
+        model.addAttribute("beehiveStatistic", beehiveStatisticService.createBeehiveStatistic(beehive, currentYear));
+        model.addAttribute("beehiveStatisticLastYear", beehiveStatisticService.createBeehiveStatistic(beehive, currentYear - 1));
         return "beehive/show";
     }
 

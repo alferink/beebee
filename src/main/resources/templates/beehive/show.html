@@ -17,42 +17,82 @@
 
 <section layout:fragment="content">
 
-    <div class="box">
-        <h3 th:text="#{beehive.with.name.label(${beehive.name})}"></h3>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="box">
+                <h3 th:text="#{beehive.with.name.label(${beehive.name})}"></h3>
 
-        <div class="toolbar" role="toolbar" aria-label="...">
-            <div class="btn-group" role="group" aria-label="...">
-                <a href="#"
-                   th:href="@{'/beehive/edit/' + ${beehive.id} + '/'}"
-                   class="btn btn-default"
-                   th:text="#{default.button.edit.label}"></a>
+                <div class="toolbar" role="toolbar" aria-label="...">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a href="#"
+                           th:href="@{'/beehive/edit/' + ${beehive.id} + '/'}"
+                           class="btn btn-default"
+                           th:text="#{default.button.edit.label}"></a>
+                    </div>
+                </div>
+
+                <form action="/beehive/save" method="post">
+                    <fieldset class="form">
+                        <div class="form-group">
+                            <label th:text="#{beehive.name.label}">Name</label>
+                            <div class="controls" th:text="${beehive.name}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{beehive.created.label}">Created</label>
+                            <div class="controls" th:text="${{beehive.created}}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{beehive.hiveType.label}">Hive type</label>
+                            <div class="controls" th:text="#{'hiveType.' + ${beehive.hiveType} + '.label'}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{apiary.label}">Apiary</label>
+                            <div class="controls" th:text="${beehive.apiary.name}"></div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-sm-6">
+            <div class="box">
+                <h3 th:text="#{beehive.statistic.header(${beehiveStatistic.year}, ${beehiveStatisticLastYear.year})}"></h3>
+
+                <br/><br/>
+
+                <div class="form-group">
+                    <label th:text="#{beehiveStatistic.honeyQuantity.label}">honeyQuantity</label>
+                    <div class="controls">
+                        <span th:text="${beehiveStatistic.honeyQuantity}"></span> (<span
+                            th:text="${beehiveStatisticLastYear.honeyQuantity}"></span>)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label th:text="#{beehiveStatistic.numberOfTreatmentsFormicAcid.label}">numberOfTreatmentsFormicAcid</label>
+                    <div class="controls">
+                        <span th:text="${beehiveStatistic.numberOfTreatmentsFormicAcid}"></span> (<span
+                            th:text="${beehiveStatisticLastYear.numberOfTreatmentsFormicAcid}"></span>)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label th:text="#{beehiveStatistic.treatmentsWithOxalicAcid.label}">treatmentsWithOxalicAcid</label>
+                    <div class="controls">
+                        <input type="checkbox" th:checked="${beehiveStatistic.treatmentsWithOxalicAcid}"
+                               disabled="disabled"/> (<input type="checkbox"
+                                                             th:checked="${beehiveStatisticLastYear.treatmentsWithOxalicAcid}"
+                                                             disabled="disabled"/>)
+                    </div>
+
+                    <div class="controls">
+
+                    </div>
+                </div>
             </div>
         </div>
 
-        <form action="/beehive/save" method="post">
-            <fieldset class="form">
-                <div class="form-group">
-                    <label for="name" th:text="#{beehive.name.label}">Name</label>
-                    <input id="name" name="name" class="form-control" readonly="readonly" th:value="${beehive.name}"/>
-                </div>
-                <div class="form-group">
-                    <label for="created" th:text="#{beehive.created.label}">Created</label>
-                    <input id="created" name="created" class="form-control" readonly="readonly"
-                           th:value="${{beehive.created}}"/>
-                </div>
-                <div class="form-group">
-                    <label for="hiveType" th:text="#{beehive.hiveType.label}">Hive type</label>
-                    <input id="hiveType" name="hiveType" class="form-control" readonly="readonly"
-                           th:value="#{'hiveType.' + ${beehive.hiveType} + '.label'}"/>
-                </div>
-                <div class="form-group">
-                    <label for="apiary" th:text="#{apiary.label}">Apiary</label>
-                    <input id="apiary" name="apiary" class="form-control" readonly="readonly"
-                           th:value="${beehive.apiary} ? ${beehive.apiary.name}"/>
-                </div>
-            </fieldset>
-        </form>
+
     </div>
+
 
     <div class="box">
         <h3 th:text="#{beehiveAction.plural.label}"></h3>
