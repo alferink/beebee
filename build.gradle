@@ -7,12 +7,15 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+		classpath "org.liquibase:liquibase-gradle-plugin:1.2.1"
+        classpath 'com.h2database:h2:1.4.193'
+        classpath 'org.yaml:snakeyaml:1.17'
+    }
 }
 
 apply plugin: 'groovy'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'org.liquibase.gradle'
 
 jar {
 	baseName = 'beebee'
@@ -31,7 +34,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.data:spring-data-rest-hal-browser')
-//	compile('org.flywaydb:flyway-core')
+	compile('org.liquibase:liquibase-core')
 //	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
@@ -50,4 +53,18 @@ dependencies {
 		exclude(group:'org.webjars', module: 'bootstrap')
 	}
 	compile 'org.webjars:font-awesome:4.7.0'
+}
+
+liquibase {
+	activities {
+		main {
+			changeLogFile 'src/main/resources/db/changelog/changelog-latest.yml'
+			url 'jdbc:h2:./devDB;DB_CLOSE_ON_EXIT=FALSE'
+			username 'sa'
+			password ''
+			changeLogParameters([:])
+		}
+	}
+
+	runList = 'main'
 }

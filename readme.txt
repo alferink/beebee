@@ -16,6 +16,11 @@ http://www.ekiras.com/2015/08/spring-boot-mvc-gradle-sample-crud-project-setup.h
 
 http://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html#the-concept
 
+== Liquibase
+https://github.com/liquibase/liquibase-gradle-plugin
+http://www.liquibase.org/quickstart.html
+https://github.com/stevesaliman/liquibase-workshop
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html
 
 == libs
 * rating (stars) (https://github.com/kartik-v/bootstrap-star-rating)

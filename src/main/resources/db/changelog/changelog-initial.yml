@@ -1,0 +1,571 @@
+databaseChangeLog:
+- changeSet:
+    id: 1484687997521-1
+    author: Joerg (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: ID
+            type: VARCHAR(255)
+        - column:
+            name: BROOD_CHAMBER_ADDED
+            type: INT(10)
+        - column:
+            name: BROOD_CHAMBER_REMOVED
+            type: INT(10)
+        - column:
+            name: BRUTWABEN_ADDED
+            type: INT(10)
+        - column:
+            name: BRUTWABEN_REMOVED
+            type: INT(10)
+        - column:
+            name: DROHNENWABEN_ADDED
+            type: INT(10)
+        - column:
+            name: DROHNENWABEN_REMOVED
+            type: INT(10)
+        - column:
+            name: ENABLED
+            type: BOOLEAN(1)
+        - column:
+            name: FUTTERWABEN_ADDED
+            type: INT(10)
+        - column:
+            name: FUTTERWABEN_REMOVED
+            type: INT(10)
+        - column:
+            name: HONEY_CHAMBER_ADDED
+            type: INT(10)
+        - column:
+            name: HONEY_CHAMBER_REMOVED
+            type: INT(10)
+        - column:
+            name: LEERWABEN_ADDED
+            type: INT(10)
+        - column:
+            name: LEERWABEN_REMOVED
+            type: INT(10)
+        - column:
+            name: MITTELWAENDE_ADDED
+            type: INT(10)
+        - column:
+            name: MITTELWAENDE_REMOVED
+            type: INT(10)
+        tableName: ADD_REMOVE
+- changeSet:
+    id: 1484687997521-2
+    author: Joerg (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: ID
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: NAME
+            type: VARCHAR(255)
+        tableName: APIARY
+- changeSet:
+    id: 1484687997521-3
+    author: Joerg (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+               nullable: false
+            name: ID
+            type: VARCHAR(255)
+        - column:
+            name: DISSOLVED
+            type: TIMESTAMP
+        - column:
+            name: HIVE_TYPE
+            type: INT(10)
+        - column:
+            constraints:
+              nullable: false
+            name: NAME
+            type: VARCHAR(255)
+        - column:
+            name: APIARY_ID
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: BEEHIVE_ID
+            type: VARCHAR(255)
+        tableName: BEEHIVE
+- changeSet:
+    id: 1484687997521-4
+    author: Joerg (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: DTYPE
+            type: VARCHAR(31)
+        - column:
+            constraints:
+              nullable: false
+            name: ID
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: DATE
+            type: TIMESTAMP
+        - column:
+            name: KOENIGIN_GESEHEN
+            type: BOOLEAN(1)
+        - column:
+            name: NOTES
+            type: VARCHAR(4000)
+        - column:
+            name: WEISELRICHTIG
+            type: BOOLEAN(1)
+        - column:
+            name: FEED
+            type: INT(10)
+        - column:
+            name: QUANTITY
+            type: DECIMAL(19, 2)
+        - column:
+            name: DAYS
+            type: INT(10)
+        - column:
+            name: INFESTATION_AFTER_TREATMENT
+            type: INT(10)
+        - column:
+            name: LOT_NUMBER
+            type: VARCHAR(255)
+        - column:
+            name: MEDICINE
+            type: INT(10)
+        - column:
+            name: METHOD
+            type: INT(10)
+        - column:
+            name: HONEY_TYPE
+            type: INT(10)
+        - column:
+            name: WATER_CONTENT
+            type: DECIMAL(19, 2)
+        - column:
+            name: ADDREMOVE_ID
+            type: VARCHAR(255)
+        - column:
+            name: BEEHIVE_ID
+            type: VARCHAR(255)
+        - column:
+            name: RATING_ID
+            type: VARCHAR(255)
+        - column:
+            name: QUEEN_ID
+            type: VARCHAR(255)
+        - column:
+            name: MOVE_TO_ID
+            type: VARCHAR(255)
+        tableName: CHANGE_BEEHIVE_ACTION
+- changeSet:
+    id: 1484687997521-5
+    author: Joerg (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: ID
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: DATE
+            type: TIMESTAMP
+        - column:
+            name: KOENIGIN_GESEHEN
+            type: BOOLEAN(1)
+        - column:
+            name: NOTES
+            type: VARCHAR(4000)
+        - column:
+            name: WEISELRICHTIG
+            type: BOOLEAN(1)
+        - column:
+            name: ADDREMOVE_ID
+            type: VARCHAR(255)
+        - column:
+            name: APIARY_ID
+            type: VARCHAR(255)
+        - column:
+            name: RATING_ID
+            type: VARCHAR(255)
+        tableName: CREATION
+- changeSet:
+    id: 1484687997521-6
+    author: Joerg (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: ID
+            type: VARCHAR(255)
+        - column:
+            name: BELEGSTELLE
+            type: VARCHAR(255)
+        - column:
+            name: BREED
+            type: INT(10)
+        - column:
+            name: COLOR
+            type: INT(10)
+        - column:
+            name: YEAR
+            type: INT(10)
+        - column:
+            name: ZEICHEN
+            type: VARCHAR(255)
+        tableName: QUEEN
+- changeSet:
+    id: 1484687997521-7
+    author: Joerg (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: ID
+            type: VARCHAR(255)
+        - column:
+            name: CELL_CAPPED
+            type: INT(10)
+        - column:
+            name: EGG
+            type: INT(10)
+        - column:
+            name: ENABLED
+            type: BOOLEAN(1)
+        - column:
+            name: LARVA
+            type: INT(10)
+        - column:
+            name: SANFTMUT
+            type: INT(10)
+        - column:
+            name: VOLKSSTAERKE
+            type: INT(10)
+        - column:
+            name: WABENSITZ
+            type: INT(10)
+        tableName: RATING
+- changeSet:
+    id: 1484687997521-8
+    author: Joerg (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: ID
+        constraintName: CONSTRAINT_1
+        tableName: BEEHIVE
+- changeSet:
+    id: 1484687997521-9
+    author: Joerg (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: ID
+        constraintName: CONSTRAINT_15
+        tableName: CHANGE_BEEHIVE_ACTION
+- changeSet:
+    id: 1484687997521-10
+    author: Joerg (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: ID
+        constraintName: CONSTRAINT_3
+        tableName: ADD_REMOVE
+- changeSet:
+    id: 1484687997521-11
+    author: Joerg (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: ID
+        constraintName: CONSTRAINT_4
+        tableName: QUEEN
+- changeSet:
+    id: 1484687997521-12
+    author: Joerg (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: ID
+        constraintName: CONSTRAINT_7
+        tableName: APIARY
+- changeSet:
+    id: 1484687997521-13
+    author: Joerg (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: ID
+        constraintName: CONSTRAINT_8
+        tableName: RATING
+- changeSet:
+    id: 1484687997521-14
+    author: Joerg (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: ID
+        constraintName: CONSTRAINT_9
+        tableName: CREATION
+- changeSet:
+    id: 1484687997521-15
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: ADDREMOVE_ID
+        indexName: FK2WE14WQR1356QWI34DTMAD7OW_INDEX_9
+        tableName: CREATION
+- changeSet:
+    id: 1484687997521-16
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: QUEEN_ID
+        indexName: FK3MRBT7P0ER17GQ7JBLXQ8YCWL_INDEX_1
+        tableName: CHANGE_BEEHIVE_ACTION
+- changeSet:
+    id: 1484687997521-17
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RATING_ID
+        indexName: FK5S8R37OWRRPPWMYLQ3QK27NBB_INDEX_9
+        tableName: CREATION
+- changeSet:
+    id: 1484687997521-18
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: BEEHIVE_ID
+        indexName: FK9G1WI4X3JLW995NAQ3CGAXUPE_INDEX_1
+        tableName: BEEHIVE
+- changeSet:
+    id: 1484687997521-19
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: MOVE_TO_ID
+        indexName: FKC7KDFIWYKQW64MDDTL68EOHQK_INDEX_1
+        tableName: CHANGE_BEEHIVE_ACTION
+- changeSet:
+    id: 1484687997521-20
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RATING_ID
+        indexName: FKCQWQHN2MWPLY40UETJCC1GSFB_INDEX_1
+        tableName: CHANGE_BEEHIVE_ACTION
+- changeSet:
+    id: 1484687997521-21
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: APIARY_ID
+        indexName: FKGYTSITPFDUT924Y7SWLL6267H_INDEX_1
+        tableName: BEEHIVE
+- changeSet:
+    id: 1484687997521-22
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: APIARY_ID
+        indexName: FKKR6AWK30KPBWNXSSX0HNIJI7G_INDEX_9
+        tableName: CREATION
+- changeSet:
+    id: 1484687997521-23
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: ADDREMOVE_ID
+        indexName: FKNGV4LY8P6YA53WTBO3JLILLL9_INDEX_1
+        tableName: CHANGE_BEEHIVE_ACTION
+- changeSet:
+    id: 1484687997521-24
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: BEEHIVE_ID
+        indexName: FKPAWPI7P6UT01XAII0YH6YQ9O_INDEX_1
+        tableName: CHANGE_BEEHIVE_ACTION
+- changeSet:
+    id: 1484687997521-25
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: ADDREMOVE_ID
+        baseTableName: CREATION
+        constraintName: FK2WE14WQR1356QWI34DTMAD7OW
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: ADD_REMOVE
+- changeSet:
+    id: 1484687997521-26
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: QUEEN_ID
+        baseTableName: CHANGE_BEEHIVE_ACTION
+        constraintName: FK3MRBT7P0ER17GQ7JBLXQ8YCWL
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: QUEEN
+- changeSet:
+    id: 1484687997521-27
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RATING_ID
+        baseTableName: CREATION
+        constraintName: FK5S8R37OWRRPPWMYLQ3QK27NBB
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: RATING
+- changeSet:
+    id: 1484687997521-28
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: BEEHIVE_ID
+        baseTableName: BEEHIVE
+        constraintName: FK9G1WI4X3JLW995NAQ3CGAXUPE
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: CREATION
+- changeSet:
+    id: 1484687997521-29
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: MOVE_TO_ID
+        baseTableName: CHANGE_BEEHIVE_ACTION
+        constraintName: FKC7KDFIWYKQW64MDDTL68EOHQK
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: APIARY
+- changeSet:
+    id: 1484687997521-30
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RATING_ID
+        baseTableName: CHANGE_BEEHIVE_ACTION
+        constraintName: FKCQWQHN2MWPLY40UETJCC1GSFB
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: RATING
+- changeSet:
+    id: 1484687997521-31
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: APIARY_ID
+        baseTableName: BEEHIVE
+        constraintName: FKGYTSITPFDUT924Y7SWLL6267H
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: APIARY
+- changeSet:
+    id: 1484687997521-32
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: APIARY_ID
+        baseTableName: CREATION
+        constraintName: FKKR6AWK30KPBWNXSSX0HNIJI7G
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: APIARY
+- changeSet:
+    id: 1484687997521-33
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: ADDREMOVE_ID
+        baseTableName: CHANGE_BEEHIVE_ACTION
+        constraintName: FKNGV4LY8P6YA53WTBO3JLILLL9
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: ADD_REMOVE
+- changeSet:
+    id: 1484687997521-34
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: BEEHIVE_ID
+        baseTableName: CHANGE_BEEHIVE_ACTION
+        constraintName: FKPAWPI7P6UT01XAII0YH6YQ9O
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: BEEHIVE
+
