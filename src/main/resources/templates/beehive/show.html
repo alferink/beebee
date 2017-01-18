@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             <label th:text="#{apiary.label}">Apiary</label>
-                            <div class="controls" th:text="${beehive.apiary.name}"></div>
+                            <div class="controls" th:text="${beehive.apiary} ? ${beehive.apiary.name} : ''"></div>
                         </div>
                     </fieldset>
                 </form>

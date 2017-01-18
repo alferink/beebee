@@ -21,7 +21,7 @@
         <div th:replace="fragments/commons :: errors">...</div>
 
         <input type="hidden" th:field="*{id}"/>
-        <div th:replace="beehive/_form :: form">...</div>
+        <div th:replace="beehive/_form :: form(false)">...</div>
         <button type="submit" class="btn btn-primary" th:text="#{default.button.update.label}">Save</button>
     </form>
 </section>

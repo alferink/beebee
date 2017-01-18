@@ -20,7 +20,7 @@ import javax.validation.constraints.Past
 
 @CompileStatic
 @Entity
-@EntityListeners(CreationUpdateApiaryEntityListener)
+@EntityListeners(CreationEntityListener)
 class Creation extends BaseEntity implements BeehiveAction {
 
     Creation() {

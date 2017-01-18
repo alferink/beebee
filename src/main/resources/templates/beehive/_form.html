@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<th:div th:fragment="form">
+<th:div th:fragment="form(create)">
     <fieldset class="form">
         <div th:class="${#fields.hasErrors('name')}? 'form-group has-error' : 'form-group'">
             <label class="control-label" th:for="name" th:text="#{beehive.name.label}">Name</label>
@@ -22,7 +22,7 @@
                         th:text="#{${'hiveType.' + type  + '.label'}}">Wireframe</option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" th:if="${create}">
             <label th:for="beehive.creationAction.apiary" th:text="#{apiary.label}">apiary</label>
             <select class="form-control" th:field="*{creationAction.apiary}">
                 <option value=""></option>

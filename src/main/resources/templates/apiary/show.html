@@ -46,7 +46,7 @@
         <div class="toolbar" role="toolbar" aria-label="...">
             <div class="btn-group" role="group" aria-label="...">
                 <a href="#"
-                   th:href="@{/beehive/create/(apiary=${apiary.id})}"
+                   th:href="@{/beehive/create/(creationAction.apiary=${apiary.id})}"
                    class="btn btn-default"
                    th:text="#{default.create.label(#{beehive.label})}" ></a>
             </div>

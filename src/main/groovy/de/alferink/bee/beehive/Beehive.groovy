@@ -25,6 +25,7 @@ import javax.validation.constraints.Size
 
 @CompileStatic
 @Entity
+@EntityListeners(BeehiveEntityListener)
 class Beehive {
 
     @Id

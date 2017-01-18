@@ -21,7 +21,7 @@
     <form th:action="@{/beehive/save}" th:object="${beehive}" method="post">
         <div th:replace="fragments/commons :: errors">...</div>
 
-        <div th:replace="beehive/_form :: form">...</div>
+        <div th:replace="beehive/_form :: form(true)">...</div>
         <button type="submit" class="btn btn-primary" th:text="#{default.button.save.label}">Save</button>
     </form>
 </section>
