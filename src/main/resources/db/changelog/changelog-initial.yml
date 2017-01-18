@@ -12,49 +12,49 @@ databaseChangeLog:
             type: VARCHAR(255)
         - column:
             name: BROOD_CHAMBER_ADDED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: BROOD_CHAMBER_REMOVED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: BRUTWABEN_ADDED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: BRUTWABEN_REMOVED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: DROHNENWABEN_ADDED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: DROHNENWABEN_REMOVED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: ENABLED
-            type: BOOLEAN(1)
+            type: BOOLEAN
         - column:
             name: FUTTERWABEN_ADDED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: FUTTERWABEN_REMOVED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: HONEY_CHAMBER_ADDED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: HONEY_CHAMBER_REMOVED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: LEERWABEN_ADDED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: LEERWABEN_REMOVED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: MITTELWAENDE_ADDED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: MITTELWAENDE_REMOVED
-            type: INT(10)
+            type: INTEGER
         tableName: ADD_REMOVE
 - changeSet:
     id: 1484687997521-2
@@ -89,7 +89,7 @@ databaseChangeLog:
             type: TIMESTAMP
         - column:
             name: HIVE_TYPE
-            type: INT(10)
+            type: INTEGER
         - column:
             constraints:
               nullable: false
@@ -127,37 +127,37 @@ databaseChangeLog:
             type: TIMESTAMP
         - column:
             name: KOENIGIN_GESEHEN
-            type: BOOLEAN(1)
+            type: BOOLEAN
         - column:
             name: NOTES
             type: VARCHAR(4000)
         - column:
             name: WEISELRICHTIG
-            type: BOOLEAN(1)
+            type: BOOLEAN
         - column:
             name: FEED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: QUANTITY
             type: DECIMAL(19, 2)
         - column:
             name: DAYS
-            type: INT(10)
+            type: INTEGER
         - column:
             name: INFESTATION_AFTER_TREATMENT
-            type: INT(10)
+            type: INTEGER
         - column:
             name: LOT_NUMBER
             type: VARCHAR(255)
         - column:
             name: MEDICINE
-            type: INT(10)
+            type: INTEGER
         - column:
             name: METHOD
-            type: INT(10)
+            type: INTEGER
         - column:
             name: HONEY_TYPE
-            type: INT(10)
+            type: INTEGER
         - column:
             name: WATER_CONTENT
             type: DECIMAL(19, 2)
@@ -195,13 +195,13 @@ databaseChangeLog:
             type: TIMESTAMP
         - column:
             name: KOENIGIN_GESEHEN
-            type: BOOLEAN(1)
+            type: BOOLEAN
         - column:
             name: NOTES
             type: VARCHAR(4000)
         - column:
             name: WEISELRICHTIG
-            type: BOOLEAN(1)
+            type: BOOLEAN
         - column:
             name: ADDREMOVE_ID
             type: VARCHAR(255)
@@ -228,13 +228,13 @@ databaseChangeLog:
             type: VARCHAR(255)
         - column:
             name: BREED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: COLOR
-            type: INT(10)
+            type: INTEGER
         - column:
             name: YEAR
-            type: INT(10)
+            type: INTEGER
         - column:
             name: ZEICHEN
             type: VARCHAR(255)
@@ -252,25 +252,25 @@ databaseChangeLog:
             type: VARCHAR(255)
         - column:
             name: CELL_CAPPED
-            type: INT(10)
+            type: INTEGER
         - column:
             name: EGG
-            type: INT(10)
+            type: INTEGER
         - column:
             name: ENABLED
-            type: BOOLEAN(1)
+            type: BOOLEAN
         - column:
             name: LARVA
-            type: INT(10)
+            type: INTEGER
         - column:
             name: SANFTMUT
-            type: INT(10)
+            type: INTEGER
         - column:
             name: VOLKSSTAERKE
-            type: INT(10)
+            type: INTEGER
         - column:
             name: WABENSITZ
-            type: INT(10)
+            type: INTEGER
         tableName: RATING
 - changeSet:
     id: 1484687997521-8
