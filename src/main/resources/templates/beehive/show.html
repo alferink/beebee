@@ -95,8 +95,8 @@
 
 
     <div class="box">
+        <a name="actions"></a>
         <h3 th:text="#{beehiveAction.plural.label}"></h3>
-
 
         <div class="toolbar" role="toolbar" aria-label="...">
             <div class="btn-group" role="group" aria-label="...">
@@ -116,6 +116,14 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="pull-right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination" style="margin-bottom: 0; margin-top: 0;" th:each="year: ${actionsYears}">
+                        <li th:class="${year == actionsYear} ? 'active' : ''"><a th:href="'?actionsYear=' + ${year} + '#actions'" th:text="${year}"></a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
         <table class="table table-striped">
@@ -125,7 +133,7 @@
                 <th>-</th>
             </tr>
             <tbody>
-            <tr th:each="beehiveAction: ${beehive.allBeehiveActions}">
+            <tr th:each="beehiveAction: ${beehive.allBeehiveActions}" th:if="${beehiveAction.year == actionsYear}" >
                 <td th:text="${{beehiveAction.date}}">
                 </td>
                 <td>

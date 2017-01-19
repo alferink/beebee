@@ -56,7 +56,7 @@ class Beehive {
     List<BeehiveAction> getAllBeehiveActions() {
         List<BeehiveAction> actions = []
         actions.addAll(beehiveActions)
-        actions.sort { it.date }
+        actions = actions.sort { it.date }.reverse()
         actions.add(creationAction)
         actions
     }

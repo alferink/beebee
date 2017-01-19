@@ -26,41 +26,41 @@
                 <div th:class="${#fields.hasErrors('rating.egg')}? 'form-group has-error' : 'form-group'">
                     <label class="control-label" th:for="rating.egg" th:text="#{rating.egg.label}">Egg</label>
                     <select class="form-control rating" th:field="*{rating.egg}">
-                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                        <div th:include="beehiveAction/_form :: rating-options(*{rating.egg})"></div>
                     </select>
                 </div>
                 <div th:class="${#fields.hasErrors('rating.larva')}? 'form-group has-error' : 'form-group'">
                     <label class="control-label" th:for="rating.larva" th:text="#{rating.larva.label}">Larva</label>
                     <select class="form-control rating" th:field="*{rating.larva}">
-                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                        <div th:include="beehiveAction/_form :: rating-options(*{rating.larva})"></div>
                     </select>
                 </div>
                 <div th:class="${#fields.hasErrors('rating.cellCapped')}? 'form-group has-error' : 'form-group'">
                     <label class="control-label" th:for="rating.cellCapped"
                            th:text="#{rating.cellCapped.label}">Notes</label>
                     <select class="form-control rating" th:field="*{rating.cellCapped}">
-                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                        <div th:include="beehiveAction/_form :: rating-options(*{rating.cellCapped})"></div>
                     </select>
                 </div>
                 <div th:class="${#fields.hasErrors('rating.wabensitz')}? 'form-group has-error' : 'form-group'">
                     <label class="control-label" th:for="rating.wabensitz"
                            th:text="#{rating.wabensitz.label}">Notes</label>
                     <select class="form-control rating" th:field="*{rating.wabensitz}">
-                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                        <div th:include="beehiveAction/_form :: rating-options(*{rating.wabensitz})"></div>
                     </select>
                 </div>
                 <div th:class="${#fields.hasErrors('rating.sanftmut')}? 'form-group has-error' : 'form-group'">
                     <label class="control-label" th:for="rating.sanftmut"
                            th:text="#{rating.sanftmut.label}">Notes</label>
                     <select class="form-control rating" th:field="*{rating.sanftmut}">
-                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                        <div th:include="beehiveAction/_form :: rating-options(*{rating.sanftmut})"></div>
                     </select>
                 </div>
                 <div th:class="${#fields.hasErrors('rating.volksstaerke')}? 'form-group has-error' : 'form-group'">
                     <label class="control-label" th:for="rating.volksstaerke"
                            th:text="#{rating.volksstaerke.label}">Notes</label>
                     <select class="form-control rating" th:field="*{rating.volksstaerke}">
-                        <div th:include="beehiveAction/_form :: rating-options"></div>
+                        <div th:include="beehiveAction/_form :: rating-options(*{rating.volksstaerke})"></div>
                     </select>
                 </div>
             </fieldset>
@@ -322,12 +322,12 @@
     </div>
 </div>
 
-<div th:fragment="rating-options">
-    <option value="">keine Angabe</option>
-    <option value="1">gering bis fehlend</option>
-    <option value="2">mäßig</option>
-    <option value="3">viel (befriedigend)</option>
-    <option value="4">sehr viel (gut)</option>
+<div th:fragment="rating-options(value)">
+    <option value="" th:selected="${value == null}">keine Angabe</option>
+    <option value="1" th:selected="${value == 1}">gering bis fehlend</option>
+    <option value="2" th:selected="${value == 2}">mäßig</option>
+    <option value="3" th:selected="${value == 3}">viel (befriedigend)</option>
+    <option value="4" th:selected="${value == 4}">sehr viel (gut)</option>
 </div>
 
 </body>

@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
 
 import javax.validation.Valid
 import java.time.LocalDate
@@ -34,13 +35,22 @@ class BeehiveController {
     }
 
     @RequestMapping(value = "{id}")
-    public String show(@PathVariable String id, Model model) {
+    public String show(@PathVariable String id, @RequestParam(required = false) Integer actionsYear, Model model) {
         int currentYear = LocalDate.now().year
 
         Beehive beehive = beehiveRepository.findOne(id)
         model.addAttribute("beehive", beehive);
         model.addAttribute("beehiveStatistic", beehiveStatisticService.createBeehiveStatistic(beehive, currentYear));
         model.addAttribute("beehiveStatisticLastYear", beehiveStatisticService.createBeehiveStatistic(beehive, currentYear - 1));
+
+        List<Integer> beehiveActionYears = (beehive.allBeehiveActions.collect {
+            it.year
+        } as Set) as List
+        beehiveActionYears = beehiveActionYears.sort().reverse()
+        actionsYear = actionsYear ?: beehiveActionYears.max()
+        model.addAttribute("actionsYear", actionsYear);
+        model.addAttribute("actionsYears", beehiveActionYears);
+
         return "beehive/show";
     }
 

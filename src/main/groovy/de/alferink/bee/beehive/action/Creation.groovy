@@ -17,6 +17,7 @@ import javax.persistence.OneToOne
 import javax.persistence.Transient
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Past
+import java.time.ZoneId
 
 @CompileStatic
 @Entity
@@ -56,5 +57,10 @@ class Creation extends BaseEntity implements BeehiveAction {
     @Transient
     BeehiveActionType getActionType() {
         BeehiveActionType.CREATION
+    }
+
+    @Transient
+    Integer getYear() {
+        date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().year
     }
 }

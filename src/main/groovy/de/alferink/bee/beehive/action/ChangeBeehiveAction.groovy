@@ -5,16 +5,10 @@ import de.alferink.bee.beehive.Beehive
 import groovy.transform.CompileStatic
 import org.hibernate.validator.constraints.Length
 
-import javax.persistence.CascadeType
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
-import javax.persistence.OneToOne
-import javax.persistence.PrimaryKeyJoinColumn
-import javax.persistence.Transient
+import javax.persistence.*
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Past
+import java.time.ZoneId
 
 @CompileStatic
 @Entity
@@ -48,4 +42,9 @@ abstract class ChangeBeehiveAction extends BaseEntity implements BeehiveAction {
 
     @Transient
     abstract BeehiveActionType getActionType()
+
+    @Transient
+    Integer getYear() {
+        date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().year
+    }
 }

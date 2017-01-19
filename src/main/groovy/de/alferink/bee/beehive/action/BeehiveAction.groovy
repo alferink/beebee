@@ -11,4 +11,5 @@ interface BeehiveAction {
     Beehive getBeehive()
 
     BeehiveActionType getActionType()
+    Integer getYear()
 }
