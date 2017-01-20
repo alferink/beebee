@@ -1,5 +1,7 @@
 package de.alferink.bee.beehive.action
 
+import de.alferink.bee.MessageUtils
+
 enum BeehiveActionType {
 
     FEEDING(Feeding, 'feeding'),
@@ -25,5 +27,14 @@ enum BeehiveActionType {
 
     static List<BeehiveActionType> getChangeBeehiveActionType() {
         values() - CREATION
+    }
+
+    String getInstanceName(){
+        MessageUtils.getInstanceNameMessage(this)
+    }
+
+    @Override
+    String toString() {
+        instanceName
     }
 }

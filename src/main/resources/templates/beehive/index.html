@@ -5,17 +5,13 @@
       layout:decorator="layout">>
 
 <head th:replace="layout :: site-head">
-    <title>Welcome to Spring MVC Blog</title>
+    <title th:text="#{beehive.plural.label}">BeeBee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 
 <nav th:replace="layout :: site-header"/>
 
-<!--<div th:include="fragments/commons :: panel" th:with="type='info', header='Info'" th:remove="tag">-->
-<!--<th:block layout:fragment="panel-body">-->
-<!--<p><em>This is a simple list of tasks!!!</em></p>-->
-<!--</th:block>-->
-<!--</div>-->
 <header layout:fragment="header">
     <ol class="breadcrumb">
         <li class="active" th:text="#{beehive.plural.label}">Home</li>

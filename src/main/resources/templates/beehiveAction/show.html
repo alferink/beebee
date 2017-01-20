@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
       layout:decorator="layout">
 <head th:replace="layout :: site-head">
-    <title>Getting Started: Serving Web Content</title>
+    <title th:text="#{default.show.label(${beehiveAction.actionType})}">BeeBee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 
@@ -14,14 +15,14 @@
         <li><a th:href="@{'/beehive/' + ${beehiveAction.beehive.id}+ '/'}"
                th:text="#{beehive.with.name.label(${beehiveAction.beehive.name})}">Beehive</a></li>
         <li class="active"
-            th:text="#{default.create.label(#{${beehiveAction.actionType.propertyName} + '.label'})}"></li>
+            th:text="#{default.show.label(${beehiveAction.actionType})}"></li>
     </ol>
 </header>
 
 <section layout:fragment="content">
 
     <div class="box">
-        <h3 th:text="#{default.create.label(#{${beehiveAction.actionType.propertyName} + '.label'})}"></h3>
+        <h3 th:text="#{default.show.label(${beehiveAction.actionType})}"></h3>
         <fieldset class="form">
             <div class="form-group">
                 <label class="control-label" for="date" th:text="#{beehiveAction.date.label}">Date</label>

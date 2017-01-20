@@ -1,5 +1,6 @@
 package de.alferink.bee.beehive
 
+import de.alferink.bee.MessageUtils
 import de.alferink.bee.apiary.Apiary
 import de.alferink.bee.beehive.action.BeehiveAction
 import de.alferink.bee.beehive.action.BeehiveActionType
@@ -78,4 +79,12 @@ class Beehive {
 
     }
 
+    String getInstanceName(){
+        MessageUtils.getInstanceNameMessage(this, name)
+    }
+
+    @Override
+    String toString() {
+        instanceName
+    }
 }

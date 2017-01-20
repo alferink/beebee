@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       layout:decorator="layout">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title th:text="#{default.edit.label(${apiary})}">BeeBee</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
@@ -10,7 +10,7 @@
 <header layout:fragment="header">
     <ol class="breadcrumb">
         <li><a th:href="@{/apiary/}" th:text="#{apiary.plural.label}">Apiaries</a></li>
-        <li class="active" th:text="#{default.edit.label(#{apiary.label})}"></li>
+        <li class="active" th:text="#{default.edit.label(${apiary})}"></li>
     </ol>
 
     <h1 th:text="#{default.edit.label(#{apiary.label})}"></h1>

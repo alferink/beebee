@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
       layout:decorator="layout">
 <head th:replace="layout :: site-head">
-    <title>Getting Started: Serving Web Content</title>
+    <title th:text="#{default.show.label(${apiary})}">BeeBee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 
@@ -11,7 +12,7 @@
 <header layout:fragment="header">
     <ol class="breadcrumb">
         <li><a th:href="@{/apiary/}" th:text="#{apiary.plural.label}">Home</a></li>
-        <li class="active" th:text="#{default.show.label(#{apiary.label})}"></li>
+        <li class="active" th:text="#{default.show.label(${apiary})}"></li>
     </ol>
 
     <!--<h1 th:text="#{default.show.label(#{apiary.label})}"></h1>-->
@@ -66,7 +67,7 @@
                 </td>
                 <td th:text="${{beehive.created}}">
                 </td>
-                <td th:text="${beehive.hiveType} ? #{'hiveType.' + ${beehive.hiveType} + '.label'}">
+                <td th:text="${beehive.hiveType}">
                 </td>
             </tr>
             </tbody>

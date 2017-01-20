@@ -1,5 +1,6 @@
 package de.alferink.bee.apiary
 
+import de.alferink.bee.MessageUtils
 import de.alferink.bee.beehive.Beehive
 import groovy.transform.CompileStatic
 import org.hibernate.annotations.GenericGenerator
@@ -26,4 +27,13 @@ class Apiary {
 
     @OneToMany(mappedBy = "apiary")
     List<Beehive> beehives
+
+    String getInstanceName(){
+        MessageUtils.getInstanceNameMessage(this, name)
+    }
+
+    @Override
+    String toString() {
+        instanceName
+    }
 }

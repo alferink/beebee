@@ -52,12 +52,12 @@
     <div class="form-group">
         <label th:for="medicine" th:text="#{varroaTreatment.medicine.label}">Medicine</label>
         <input id="medicine" class="form-control" readonly="readonly"
-               th:value="#{'varroaTreatmentDrug.' + ${beehiveAction.medicine}  + '.label'}"/>
+               th:value="${beehiveAction.medicine}"/>
     </div>
     <div class="form-group">
         <label th:for="method" th:text="#{varroaTreatment.method.label}">Method</label>
         <input id="method" class="form-control" readonly="readonly"
-               th:value="#{'varroaTreatmentType.' + ${beehiveAction.method}  + '.label'}"/>
+               th:value="${beehiveAction.method}}"/>
     </div>
     <div class="form-group">
         <label class="control-label" th:for="quantity" th:text="#{varroaTreatment.quantity.label}">Quantity</label>

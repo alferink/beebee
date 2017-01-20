@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod
 import javax.validation.Valid
 
 @Controller
-@RequestMapping(value = ['/apiary'])
+@RequestMapping(value = ['', '/apiary'])
 class ApiaryController {
 
     @Autowired

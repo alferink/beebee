@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head id="headerFragment" th:fragment="headerFragment">
+</head>
+<body>
+
+<div th:fragment="feeding" >
+    <span th:text="#{feeding.summary.message(${beehiveAction.quantity}, ${beehiveAction.feed})}"></span>
+</div>
+
+<div th:fragment="honeyHarvest">
+    <span th:text="#{honeyHarvest.summary.message(${beehiveAction.quantity}, ${beehiveAction.honeyType})}"></span>
+</div>
+
+<div th:fragment="review">
+    <span th:text="#{review.summary.message(${beehiveAction.notes})}"></span>
+</div>
+
+<div th:fragment="varroaCheck">
+    <span th:text="#{varroaCheck.summary.message(${beehiveAction.quantity}, ${beehiveAction.days})}"></span>
+</div>
+
+<div th:fragment="varroaTreatment">
+    <span th:text="#{varroaTreatment.summary.message(${beehiveAction.quantity}, ${beehiveAction.medicine}, ${beehiveAction.method})}"></span>
+</div>
+
+<div th:fragment="queenInstallation">
+    <span th:text="#{queenInstallation.summary.message(${beehiveAction.queen.breed}, ${#strings.toString(beehiveAction.queen.year)})}"></span>
+</div>
+
+<div th:fragment="moveBeehive">
+    <span th:text="#{moveBeehive.summary.message(${beehiveAction.moveTo})}"></span>
+</div>
+
+<div th:fragment="creation">
+    <span th:text="#{creation.summary.message(${beehiveAction.apiary})}"></span>
+</div>
+
+</body>
+</html>

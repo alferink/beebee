@@ -185,8 +185,8 @@
         <label th:for="feed" th:text="#{feeding.feed.label}">Feed</label>
         <select class="form-control" th:field="*{feed}">
             <option th:each="beeFeed : ${T(de.alferink.bee.beehive.BeeFeed).values()}"
-                    th:value="${beeFeed}"
-                    th:text="#{${'beeFeed.' + beeFeed  + '.label'}}">...
+                    th:value="${beeFeed.name()}"
+                    th:text="${beeFeed}">...
             </option>
         </select>
     </div>
@@ -202,8 +202,8 @@
         <label th:for="honeyType" th:text="#{honeyHarvest.honeyType.label}">honeyType</label>
         <select class="form-control" th:field="*{honeyType}">
             <option th:each="honeyType : ${T(de.alferink.bee.beehive.HoneyType).values()}"
-                    th:value="${honeyType}"
-                    th:text="#{${'honeyType.' + honeyType  + '.label'}}">...
+                    th:value="${honeyType.name()}"
+                    th:text="${honeyType}">...
             </option>
         </select>
     </div>
@@ -239,8 +239,8 @@
         <label th:for="medicine" th:text="#{varroaTreatment.medicine.label}">Medicine</label>
         <select class="form-control" th:field="*{medicine}">
             <option th:each="treatmentDrug : ${T(de.alferink.bee.beehive.VarroaTreatmentDrug).values()}"
-                    th:value="${treatmentDrug}"
-                    th:text="#{${'varroaTreatmentDrug.' + treatmentDrug  + '.label'}}">...
+                    th:value="${treatmentDrug.name()}"
+                    th:text="${treatmentDrug}">...
             </option>
         </select>
     </div>
@@ -248,8 +248,8 @@
         <label th:for="method" th:text="#{varroaTreatment.method.label}">Medicine</label>
         <select class="form-control" th:field="*{method}">
             <option th:each="treatmentType : ${T(de.alferink.bee.beehive.VarroaTreatmentType).values()}"
-                    th:value="${treatmentType}"
-                    th:text="#{${'varroaTreatmentType.' + treatmentType  + '.label'}}">...
+                    th:value="${treatmentType.name()}"
+                    th:text="${treatmentType}">...
             </option>
         </select>
     </div>
@@ -273,8 +273,8 @@
         <label th:for="queen.color" th:text="#{queen.color.label}">Medicine</label>
         <select class="form-control" th:field="*{queen.color}">
             <option th:each="color : ${T(de.alferink.bee.beehive.QueenColor).values()}"
-                    th:value="${color}"
-                    th:text="#{${'queenColor.' + color  + '.label'}}">...
+                    th:value="${color.name()}"
+                    th:text="${color}">...
             </option>
         </select>
     </div>
@@ -282,8 +282,8 @@
         <label th:for="queen.color" th:text="#{queen.breed.label}">Medicine</label>
         <select class="form-control" th:field="*{queen.breed}">
             <option th:each="breed : ${T(de.alferink.bee.beehive.BeeBreed).values()}"
-                    th:value="${breed}"
-                    th:text="#{${'beeBreed.' + breed  + '.label'}}">...
+                    th:value="${breed.name()}"
+                    th:text="${breed}">...
             </option>
         </select>
     </div>

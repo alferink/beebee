@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
       layout:decorator="layout">
 <head th:replace="layout :: site-head">
-    <title>Getting Started: Serving Web Content</title>
+    <title th:text="#{default.show.label(${beehive})}">BeeBee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 
@@ -11,7 +12,7 @@
 <header layout:fragment="header">
     <ol class="breadcrumb">
         <li><a th:href="@{/beehive/}" th:text="#{beehive.plural.label}">Home</a></li>
-        <li class="active" th:text="#{beehive.with.name.label(${beehive.name})}"></li>
+        <li class="active" th:text="#{default.show.label(${beehive})}"></li>
     </ol>
 </header>
 
@@ -43,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label th:text="#{beehive.hiveType.label}">Hive type</label>
-                            <div class="controls" th:text="#{'hiveType.' + ${beehive.hiveType} + '.label'}"></div>
+                            <div class="controls" th:text="${beehive.hiveType}"></div>
                         </div>
                         <div class="form-group">
                             <label th:text="#{apiary.label}">Apiary</label>
@@ -56,7 +57,7 @@
         </div>
         <div class="col-sm-6">
             <div class="box">
-                <h3 th:text="#{beehive.statistic.header(${beehiveStatistic.year}, ${beehiveStatisticLastYear.year})}"></h3>
+                <h3 th:text="#{beehive.statistic.header(${#strings.toString(beehiveStatistic.year)}, ${#strings.toString(beehiveStatisticLastYear.year)})}"></h3>
 
                 <br/><br/>
 
@@ -130,6 +131,7 @@
             <tr>
                 <th>Datum</th>
                 <th>Name</th>
+                <th>Beschreibung</th>
                 <th>-</th>
             </tr>
             <tbody>
@@ -138,7 +140,10 @@
                 </td>
                 <td>
                     <a th:href="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/' + ${beehiveAction.id}}"
-                       th:text="#{${beehiveAction.actionType.propertyName} + '.label'}"></a>
+                       th:text="${beehiveAction.actionType}"></a>
+                </td>
+                <td>
+                    <div th:replace="beehiveAction/_summary :: ${beehiveAction.actionType.propertyName}">...</div>
                 </td>
                 <td>
                     <a th:href="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/edit/' + ${beehiveAction.id} + '/'}"

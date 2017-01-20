@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
       layout:decorator="layout">
 <head th:replace="layout :: site-head">
-    <title>Getting Started: Serving Web Content</title>
+    <title th:text="#{default.create.label(#{beehive.label})}">BeeBee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 

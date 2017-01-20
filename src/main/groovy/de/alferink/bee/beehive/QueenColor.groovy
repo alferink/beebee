@@ -1,5 +1,7 @@
 package de.alferink.bee.beehive
 
+import de.alferink.bee.MessageUtils
+
 enum QueenColor {
     WHITE,
     YELLOW,
@@ -7,4 +9,13 @@ enum QueenColor {
     GREEN,
     BLUE,
     NONE
+
+    String getInstanceName(){
+        MessageUtils.getInstanceNameMessage(this)
+    }
+
+    @Override
+    String toString() {
+        instanceName
+    }
 }
