@@ -6,8 +6,9 @@ spring:
     cache: false
   datasource:
     url: 'jdbc:h2:./devDB;DB_CLOSE_ON_EXIT=FALSE'
+#    url: 'jdbc:h2:./prodDB;DB_CLOSE_ON_EXIT=FALSE'
   jpa:
     hibernate:
-      ddl-auto: ''
+      ddl-auto: 'update'
 liquibase:
-#  enabled: false
+  enabled: false

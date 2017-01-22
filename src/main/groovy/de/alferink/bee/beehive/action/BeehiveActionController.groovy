@@ -76,4 +76,11 @@ class BeehiveActionController<T extends ChangeBeehiveAction> {
         beehiveActionRepository.save(beehiveAction);
         return "redirect:/beehive/${beehiveAction.beehive.id}";
     }
+
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.POST)
+    public String delete(@PathVariable String id, Model model) {
+        BeehiveAction beehiveAction = beehiveActionRepository.findOne(id)
+        beehiveActionRepository.delete(beehiveAction)
+        return "redirect:/beehive/${beehiveAction.beehive.id}";
+    }
 }

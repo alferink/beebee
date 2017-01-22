@@ -150,8 +150,18 @@
                     <div th:replace="beehiveAction/_summary :: ${beehiveAction.actionType.propertyName}">...</div>
                 </td>
                 <td>
-                    <a th:href="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/edit/' + ${beehiveAction.id} + '/'}"
-                       class="btn btn-warning">Edit</a>
+                    <form class="delete"
+                          th:attr="data-confirm-message=#{delete.confirm.message}"
+                        th:action="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/delete/' +
+                        ${beehiveAction.id}}"
+                        method="post">
+                        <a th:href="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/edit/' + ${beehiveAction.id} + '/'}"
+                           class="btn btn-warning">Edit</a>
+                        <button type="submit" class="btn btn-danger" th:text="#{default.button.delete.label}"
+                                th:if="${beehiveAction instanceof T(de.alferink.bee.beehive.action.ChangeBeehiveAction)}">
+                            Delete
+                        </button>
+                    </form>
                 </td>
             </tr>
             </tbody>

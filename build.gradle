@@ -60,7 +60,9 @@ liquibase {
 	activities {
 		main {
 			changeLogFile 'src/main/resources/db/changelog/changelog-latest.yml'
-			url 'jdbc:h2:./devDB;DB_CLOSE_ON_EXIT=FALSE'
+			referenceUrl 'jdbc:h2:./devDB;DB_CLOSE_ON_EXIT=FALSE'
+			url 'jdbc:h2:./prodDB;DB_CLOSE_ON_EXIT=FALSE'
+			referenceUsername 'sa'
 			username 'sa'
 			password ''
 			changeLogParameters([:])
