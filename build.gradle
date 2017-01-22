@@ -19,7 +19,7 @@ apply plugin: 'org.liquibase.gradle'
 
 jar {
 	baseName = 'beebee'
-	version = '0.0.5'
+	version = '0.0.6'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -40,7 +40,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
     compile("org.springframework.boot:spring-boot-devtools")
 //    compile("org.springframework.data:spring-data-rest-webmvc:2.5.6.RELEASE")
-	compile('org.codehaus.groovy:groovy')
+	compile('org.codehaus.groovy:groovy-all')
     runtime('org.postgresql:postgresql')
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
@@ -53,7 +53,8 @@ dependencies {
 	compile ('org.webjars:bootstrap-tagsinput:0.6.1') {
 		exclude(group:'org.webjars', module: 'bootstrap')
 	}
-	compile 'org.webjars:font-awesome:4.7.0'
+    compile 'org.webjars.bower:bootstrap-colorpicker:2.3.6'
+    compile 'org.webjars:font-awesome:4.7.0'
 }
 
 liquibase {

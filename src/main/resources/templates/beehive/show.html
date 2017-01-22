@@ -43,6 +43,11 @@
                             <div class="controls" th:text="${{beehive.created}}"></div>
                         </div>
                         <div class="form-group">
+                            <label th:text="#{beehive.color.label}">Color</label>
+                            <div class="controls" th:style="' background-color: ' + ${beehive.color}" th:text="${beehive.color}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label th:text="#{beehive.hiveType.label}">Hive type</label>
                             <div class="controls" th:text="${beehive.hiveType}"></div>
                         </div>

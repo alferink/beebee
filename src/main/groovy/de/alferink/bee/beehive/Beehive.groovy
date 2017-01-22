@@ -40,6 +40,8 @@ class Beehive {
     @Size(min = 1, max = 255)
     String name
 
+    String color
+
     HiveType hiveType
 
     @OneToMany(mappedBy = "beehive", fetch = FetchType.EAGER)

@@ -4,6 +4,8 @@
 <head th:replace="layout :: site-head">
     <title th:text="#{default.show.label(${apiary})}">BeeBee</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="" th:src="@{/js/statistics.js}"></script>
 </head>
 <body>
 
@@ -26,7 +28,7 @@
                 <a href="#"
                    th:href="@{'/apiary/edit/' + ${apiary.id} + '/'}"
                    class="btn btn-default"
-                   th:text="#{default.button.edit.label}" ></a>
+                   th:text="#{default.button.edit.label}"></a>
             </div>
         </div>
 
@@ -41,13 +43,75 @@
     </div>
 
     <div class="box">
+        <h3 th:text="#{beehiveStatistic.plural.label}"></h3>
+
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#honeyHarvestStatistic"
+                                                          aria-controls="honeyHarvestStatistic" role="tab"
+                                                          data-toggle="tab"
+                                                          th:text="#{beehiveStatistic.honeyQuantity.short.label}"></a>
+                </li>
+                <li role="presentation"><a href="#feedingStatistic" aria-controls="feedingStatistic" role="tab"
+                                           data-toggle="tab"
+                                           th:text="#{beehiveStatistic.feeding.short.label}">Profile</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="honeyHarvestStatistic">
+                    <div id="honeyHarvest" style="width:100%;height:400px;"/>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="feedingStatistic">
+                    <div id="feeding" style="width:100%;height:400px;"/>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" th:inline="javascript">
+            /*<![CDATA[*/
+            $(document).ready(function () {
+                var beehiveStatistics = /*[[${beehiveStatistics}]]*/ null
+
+                var honeyHarvestData = createBeehiveStatisticData(beehiveStatistics, 'honeyQuantity')
+                var honeyHarvestLayout = {
+                    yaxis: {
+                        title: /*[[#{beehiveStatistic.honeyQuantity.label}]]*/ null,
+                    },
+                    title: /*[[#{apiary.beehiveStatistic.honeyHarvest.label}]]*/ null,
+                    barmode: 'group'
+                };
+                Plotly.newPlot('honeyHarvest', honeyHarvestData, honeyHarvestLayout);
+
+                var feedingData = createBeehiveStatisticData(beehiveStatistics, 'feedQuantity')
+                var feedingLayout = {
+                    yaxis: {
+                        title: /*[[#{beehiveStatistic.feeding.label}]]*/ null,
+                    },
+                    title: /*[[#{apiary.beehiveStatistic.feeding.label}]]*/ null,
+                    barmode: 'group'
+                };
+                Plotly.newPlot('feeding', feedingData, feedingLayout);
+
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    Plotly.newPlot('honeyHarvest', honeyHarvestData, honeyHarvestLayout);
+                    Plotly.newPlot('feeding', feedingData, feedingLayout);
+                })
+            });
+            /*]]>*/
+        </script>
+    </div>
+
+    <div class="box">
         <h3 th:text="#{beehive.plural.label}"></h3>
         <div class="toolbar" role="toolbar" aria-label="...">
             <div class="btn-group" role="group" aria-label="...">
                 <a href="#"
                    th:href="@{/beehive/create/(creationAction.apiary=${apiary.id})}"
                    class="btn btn-default"
-                   th:text="#{default.create.label(#{beehive.label})}" ></a>
+                   th:text="#{default.create.label(#{beehive.label})}"></a>
             </div>
         </div>
 

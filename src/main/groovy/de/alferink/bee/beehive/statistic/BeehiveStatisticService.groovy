@@ -1,5 +1,6 @@
 package de.alferink.bee.beehive.statistic
 
+import de.alferink.bee.apiary.Apiary
 import de.alferink.bee.beehive.Beehive
 import de.alferink.bee.beehive.VarroaTreatmentDrug
 import de.alferink.bee.beehive.action.BeehiveActionType
@@ -10,6 +11,18 @@ import java.time.ZoneId
 
 @Service
 class BeehiveStatisticService {
+
+    List<BeehiveStatistics> createBeehiveStatistics(Apiary apiary, IntRange years) {
+
+        apiary.beehives.collect { Beehive beehive ->
+            new BeehiveStatistics(
+                    beehive: new BeehiveInfo(name: beehive.name, color: beehive.color),
+                    beehiveStatistics: years.collect { Integer year ->
+                        createBeehiveStatistic(beehive, year)
+                    }
+            )
+        }
+    }
 
     BeehiveStatistic createBeehiveStatistic(Beehive beehive, Integer year) {
 
@@ -22,6 +35,11 @@ class BeehiveStatisticService {
         beehiveStatistic.year = year
         beehiveStatistic.honeyQuantity = actions.findAll {
             it.actionType == BeehiveActionType.HONEY_HARVEST
+        }.sum {
+            it.quantity
+        }
+        beehiveStatistic.feedQuantity = actions.findAll {
+            it.actionType == BeehiveActionType.FEEDING
         }.sum {
             it.quantity
         }

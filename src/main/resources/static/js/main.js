@@ -21,3 +21,7 @@ $(document).ready(function () {
         });
     });
 });
+
+$(document).ready(function () {
+    $('.colorpicker-component').colorpicker({});
+});

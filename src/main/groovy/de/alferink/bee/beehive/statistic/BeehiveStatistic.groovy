@@ -8,6 +8,7 @@ class BeehiveStatistic {
     Integer year
 
     BigDecimal honeyQuantity
+    BigDecimal feedQuantity
 
     Integer numberOfTreatmentsFormicAcid
     Boolean treatmentsWithOxalicAcid

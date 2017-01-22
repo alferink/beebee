@@ -26,3 +26,9 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-in
 * rating (stars) (https://github.com/kartik-v/bootstrap-star-rating)
 
 ? http://antenna.io/demo/jquery-bar-rating/examples/
+* https://github.com/itsjavi/bootstrap-colorpicker
+
+* https://plot.ly/javascript/bar-charts/
+
+
+* Farben: http://www.rapidtables.com/web/color/RGB_Color.htm
