@@ -10,7 +10,8 @@
             <label class="control-label" th:for="name" th:text="#{beehive.name.label}">Name</label>
             <input class="form-control" th:field="*{name}"/>
         </div>
-        <div th:class="${#fields.hasErrors('creationAction.date')}? 'form-group has-error' : 'form-group'">
+        <input type="hidden" th:field="*{creationAction.id}" th:unless="${create}"/>
+        <div th:class="${#fields.hasErrors('creationAction.date')}? 'form-group has-error' : 'form-group'" th:if="${create}">
             <label class="control-label" th:for="creationAction.date" th:text="#{beehive.created.label}">Created</label>
             <input class="form-control" th:field="*{creationAction.date}"/>
         </div>

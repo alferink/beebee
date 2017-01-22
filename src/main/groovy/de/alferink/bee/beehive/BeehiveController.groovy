@@ -1,6 +1,7 @@
 package de.alferink.bee.beehive
 
 import de.alferink.bee.apiary.ApiaryRepository
+import de.alferink.bee.beehive.action.CreationRepository
 import de.alferink.bee.beehive.statistic.BeehiveStatisticService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -18,6 +19,9 @@ import java.time.LocalDate
 @Controller
 @RequestMapping(value = '/beehive')
 class BeehiveController {
+
+    @Autowired
+    CreationRepository creationRepository
 
     @Autowired
     BeehiveRepository beehiveRepository
@@ -81,11 +85,12 @@ class BeehiveController {
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public String update(@Valid Beehive beehive, BindingResult bindingResult, Model model) {
+        beehive.creationAction = creationRepository.findOne(beehive.creationAction.id)
         if (bindingResult.hasErrors()) {
             model.addAttribute("apiaries", apiaryRepository.findAll());
             return "beehive/edit";
         }
         beehiveRepository.save(beehive);
-        return "redirect:index";
+        return "redirect:${beehive.id}";
     }
 }
