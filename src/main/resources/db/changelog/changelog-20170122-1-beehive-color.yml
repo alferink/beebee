@@ -1,0 +1,12 @@
+databaseChangeLog:
+- changeSet:
+    id: 1485123265863-1
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: COLOR
+            type: VARCHAR(255)
+        tableName: BEEHIVE
+
