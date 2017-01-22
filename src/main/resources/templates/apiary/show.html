@@ -14,8 +14,6 @@
         <li><a th:href="@{/apiary/}" th:text="#{apiary.plural.label}">Home</a></li>
         <li class="active" th:text="#{default.show.label(${apiary})}"></li>
     </ol>
-
-    <!--<h1 th:text="#{default.show.label(#{apiary.label})}"></h1>-->
 </header>
 
 <section layout:fragment="content">
@@ -35,8 +33,8 @@
         <form action="/apiary/save" method="post">
             <fieldset class="form">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input id="name" name="name" class="form-control" readonly="readonly" th:value="${apiary.name}" />
+                    <label>Name</label>
+                    <div class="controls" th:text="${apiary.name}"></div>
                 </div>
             </fieldset>
         </form>

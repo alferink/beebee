@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-sm-6">
             <fieldset class="form" th:if="${beehiveAction.rating}">
-                <legend><input type="checkbox" th:field="*{rating.enabled}"/> Rating</legend>
+                <legend><input type="checkbox" th:field="*{rating.enabled}" th:text="' ' + #{beehiveAction.rating.label}" /></legend>
                 <div th:class="${#fields.hasErrors('rating.egg')}? 'form-group has-error' : 'form-group'">
                     <label class="control-label" th:for="rating.egg" th:text="#{rating.egg.label}">Egg</label>
                     <select class="form-control rating" th:field="*{rating.egg}">
@@ -67,7 +67,7 @@
         </div>
         <div class="col-sm-6">
             <fieldset class="form" th:if="${beehiveAction.addRemove}">
-                <legend><input type="checkbox" th:field="*{addRemove.enabled}"/> Add/Remove</legend>
+                <legend><input type="checkbox" th:field="*{addRemove.enabled}"  th:text="' ' + #{beehiveAction.addRemove.label}" /></legend>
                 <div th:class="${#fields.hasErrors('addRemove.broodChamberAdded')}? 'form-group has-error' : 'form-group'">
                     <label class="control-label" th:for="addRemove.broodChamberAdded"
                            th:text="#{addRemove.broodChamber.label}">broodChamber</label>

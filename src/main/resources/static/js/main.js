@@ -4,9 +4,13 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $(function () {
-        $('select.rating').barrating({
-            theme: 'fontawesome-stars',
-        });
+        $('select.rating').each(function () {
+            var readonly = $(this).prop('disabled')
+            $(this).barrating({
+                theme: 'fontawesome-stars',
+                readonly: readonly
+            })
+        })
     });
 });
 

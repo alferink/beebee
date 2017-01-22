@@ -25,15 +25,99 @@
         <h3 th:text="#{default.show.label(${beehiveAction.actionType})}"></h3>
         <fieldset class="form">
             <div class="form-group">
-                <label class="control-label" for="date" th:text="#{beehiveAction.date.label}">Date</label>
-                <input id="date" name="date" class="form-control" readonly="readonly"
-                       th:value="${{beehiveAction.date}}"/>
+                <label class="control-label" th:text="#{beehiveAction.date.label}">Date</label>
+                <div class="controls" th:text="${{beehiveAction.date}}"></div>
             </div>
             <div th:replace="beehiveAction/_show :: ${beehiveAction.actionType.propertyName}">...</div>
+            <div class="form-group" th:if="${beehiveAction.rating.enabled}">
+                <label class="control-label" th:text="#{beehiveAction.rating.label}">Notes</label>
+                <table class="table table-condensed">
+                    <tr th:if="${beehiveAction.rating.egg}">
+                        <td th:text="#{rating.egg.label}"></td>
+                        <td>
+                            <select class="form-control rating" disabled="disabled" >
+                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.egg})"></div>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr th:if="${beehiveAction.rating.larva}">
+                        <td th:text="#{rating.larva.label}"></td>
+                        <td>
+                            <select class="form-control rating" disabled="disabled" >
+                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.larva})"></div>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr th:if="${beehiveAction.rating.cellCapped}">
+                        <td th:text="#{rating.cellCapped.label}"></td>
+                        <td>
+                            <select class="form-control rating" disabled="disabled" >
+                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.cellCapped})"></div>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr th:if="${beehiveAction.rating.wabensitz}">
+                        <td th:text="#{rating.wabensitz.label}"></td>
+                        <td>
+                            <select class="form-control rating" disabled="disabled" >
+                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.wabensitz})"></div>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr th:if="${beehiveAction.rating.sanftmut}">
+                        <td th:text="#{rating.sanftmut.label}"></td>
+                        <td>
+                            <select class="form-control rating" disabled="disabled" >
+                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.sanftmut})"></div>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr th:if="${beehiveAction.rating.volksstaerke}">
+                        <td th:text="#{rating.volksstaerke.label}"></td>
+                        <td>
+                            <select class="form-control rating" disabled="disabled" >
+                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.volksstaerke})"></div>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="form-group" th:if="${beehiveAction.addRemove.enabled}">
+                <label class="control-label" th:text="#{beehiveAction.addRemove.label}">Notes</label>
+                <table class="table table-condensed">
+                    <tr th:if="${beehiveAction.addRemove.broodChamberAdded} or ${beehiveAction.addRemove.broodChamberRemoved}">
+                        <td th:text="#{addRemove.broodChamber.label}"></td>
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.broodChamberAdded ?: 0}, ${beehiveAction.addRemove.broodChamberRemoved ?: 0})}" />
+                    </tr>
+                    <tr th:if="${beehiveAction.addRemove.honeyChamberAdded} or ${beehiveAction.addRemove.honeyChamberRemoved}">
+                        <td th:text="#{addRemove.honeyChamber.label}"></td>
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.honeyChamberAdded ?: 0}, ${beehiveAction.addRemove.honeyChamberRemoved ?: 0})}" />
+                    </tr>
+                    <tr th:if="${beehiveAction.addRemove.mittelwaendeAdded} or ${beehiveAction.addRemove.mittelwaendeRemoved}">
+                        <td th:text="#{addRemove.mittelwaende.label}"></td>
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.mittelwaendeAdded ?: 0}, ${beehiveAction.addRemove.mittelwaendeRemoved ?: 0})}" />
+                    </tr>
+                    <tr th:if="${beehiveAction.addRemove.leerwabenAdded} or ${beehiveAction.addRemove.leerwabenRemoved}">
+                        <td th:text="#{addRemove.leerwaben.label}"></td>
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.leerwabenAdded ?: 0}, ${beehiveAction.addRemove.leerwabenRemoved ?: 0})}" />
+                    </tr>
+                    <tr th:if="${beehiveAction.addRemove.brutwabenAdded} or ${beehiveAction.addRemove.brutwabenRemoved}">
+                        <td th:text="#{addRemove.brutwaben.label}"></td>
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.brutwabenAdded ?: 0}, ${beehiveAction.addRemove.brutwabenRemoved ?: 0})}" />
+                    </tr>
+                    <tr th:if="${beehiveAction.addRemove.futterwabenAdded} or ${beehiveAction.addRemove.futterwabenRemoved}">
+                        <td th:text="#{addRemove.futterwaben.label}"></td>
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.futterwabenAdded ?: 0}, ${beehiveAction.addRemove.futterwabenRemoved ?: 0})}" />
+                    </tr>
+                    <tr th:if="${beehiveAction.addRemove.drohnenwabenAdded} or ${beehiveAction.addRemove.drohnenwabenRemoved}">
+                        <td th:text="#{addRemove.drohnenwaben.label}"></td>
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.drohnenwabenAdded ?: 0}, ${beehiveAction.addRemove.drohnenwabenRemoved ?: 0})}" />
+                    </tr>
+                </table>
+            </div>
             <div class="form-group">
-                <label class="control-label" for="notes" th:text="#{beehiveAction.notes.label}">Notes</label>
-                <textarea id="notes" name="notes" class="form-control" readonly="readonly"
-                          th:value="${{beehiveAction.notes}}" rows="3"/>
+                <label class="control-label" th:text="#{beehiveAction.notes.label}">Notes</label>
+                <div class="controls" th:text="${beehiveAction.notes ?: '-'}"></div>
             </div>
         </fieldset>
     </div>
