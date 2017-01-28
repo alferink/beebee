@@ -31,4 +31,10 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-in
 * https://plot.ly/javascript/bar-charts/
 
 
-* Farben: http://www.rapidtables.com/web/color/RGB_Color.htm
+* Farben:
+** http://www.rapidtables.com/web/color/RGB_Color.htm
+** https://www.mediaevent.de/tutorial/farbcodes.html
+
+Icons
+* https://icons8.com/web-app/for/all/honey
+* https://sourceforge.net/projects/openiconlibrary/?source=typ_redirect

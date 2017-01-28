@@ -2,6 +2,7 @@ package de.alferink.bee.beehive
 
 import de.alferink.bee.apiary.ApiaryRepository
 import de.alferink.bee.beehive.action.CreationRepository
+import de.alferink.bee.beehive.statistic.BeehiveStateService
 import de.alferink.bee.beehive.statistic.BeehiveStatisticService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -32,6 +33,9 @@ class BeehiveController {
     @Autowired
     BeehiveStatisticService beehiveStatisticService
 
+    @Autowired
+    BeehiveStateService beehiveStateService
+
     @RequestMapping(value = ["/", "index"])
     public String index(Model model) {
         model.addAttribute("beehives", beehiveRepository.findAll());
@@ -44,6 +48,7 @@ class BeehiveController {
 
         Beehive beehive = beehiveRepository.findOne(id)
         model.addAttribute("beehive", beehive);
+        model.addAttribute("beehiveState", beehiveStateService.createBeehiveState(beehive, new Date()));
         model.addAttribute("beehiveStatistic", beehiveStatisticService.createBeehiveStatistic(beehive, currentYear));
         model.addAttribute("beehiveStatisticLastYear", beehiveStatisticService.createBeehiveStatistic(beehive, currentYear - 1));
 

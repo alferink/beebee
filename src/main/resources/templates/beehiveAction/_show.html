@@ -4,6 +4,59 @@
 </head>
 <body>
 
+<div th:fragment="rating(rating)">
+    <table class="table table-condensed">
+        <tr th:if="${rating.egg}">
+            <td th:text="#{rating.egg.label}"></td>
+            <td>
+                <select class="form-control rating" disabled="disabled" >
+                    <div th:include="beehiveAction/_form :: rating-options(${rating.egg})"></div>
+                </select>
+            </td>
+        </tr>
+        <tr th:if="${rating.larva}">
+            <td th:text="#{rating.larva.label}"></td>
+            <td>
+                <select class="form-control rating" disabled="disabled" >
+                    <div th:include="beehiveAction/_form :: rating-options(${rating.larva})"></div>
+                </select>
+            </td>
+        </tr>
+        <tr th:if="${rating.cellCapped}">
+            <td th:text="#{rating.cellCapped.label}"></td>
+            <td>
+                <select class="form-control rating" disabled="disabled" >
+                    <div th:include="beehiveAction/_form :: rating-options(${rating.cellCapped})"></div>
+                </select>
+            </td>
+        </tr>
+        <tr th:if="${rating.wabensitz}">
+            <td th:text="#{rating.wabensitz.label}"></td>
+            <td>
+                <select class="form-control rating" disabled="disabled" >
+                    <div th:include="beehiveAction/_form :: rating-options(${rating.wabensitz})"></div>
+                </select>
+            </td>
+        </tr>
+        <tr th:if="${rating.sanftmut}">
+            <td th:text="#{rating.sanftmut.label}"></td>
+            <td>
+                <select class="form-control rating" disabled="disabled" >
+                    <div th:include="beehiveAction/_form :: rating-options(${rating.sanftmut})"></div>
+                </select>
+            </td>
+        </tr>
+        <tr th:if="${rating.volksstaerke}">
+            <td th:text="#{rating.volksstaerke.label}"></td>
+            <td>
+                <select class="form-control rating" disabled="disabled" >
+                    <div th:include="beehiveAction/_form :: rating-options(${rating.volksstaerke})"></div>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+
 <div th:fragment="feeding">
     <div class="form-group">
         <label th:text="#{feeding.feed.label}">Feed</label>

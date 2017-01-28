@@ -31,56 +31,7 @@
             <div th:replace="beehiveAction/_show :: ${beehiveAction.actionType.propertyName}">...</div>
             <div class="form-group" th:if="${beehiveAction.rating.enabled}">
                 <label class="control-label" th:text="#{beehiveAction.rating.label}">Notes</label>
-                <table class="table table-condensed">
-                    <tr th:if="${beehiveAction.rating.egg}">
-                        <td th:text="#{rating.egg.label}"></td>
-                        <td>
-                            <select class="form-control rating" disabled="disabled" >
-                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.egg})"></div>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr th:if="${beehiveAction.rating.larva}">
-                        <td th:text="#{rating.larva.label}"></td>
-                        <td>
-                            <select class="form-control rating" disabled="disabled" >
-                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.larva})"></div>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr th:if="${beehiveAction.rating.cellCapped}">
-                        <td th:text="#{rating.cellCapped.label}"></td>
-                        <td>
-                            <select class="form-control rating" disabled="disabled" >
-                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.cellCapped})"></div>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr th:if="${beehiveAction.rating.wabensitz}">
-                        <td th:text="#{rating.wabensitz.label}"></td>
-                        <td>
-                            <select class="form-control rating" disabled="disabled" >
-                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.wabensitz})"></div>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr th:if="${beehiveAction.rating.sanftmut}">
-                        <td th:text="#{rating.sanftmut.label}"></td>
-                        <td>
-                            <select class="form-control rating" disabled="disabled" >
-                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.sanftmut})"></div>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr th:if="${beehiveAction.rating.volksstaerke}">
-                        <td th:text="#{rating.volksstaerke.label}"></td>
-                        <td>
-                            <select class="form-control rating" disabled="disabled" >
-                                <div th:include="beehiveAction/_form :: rating-options(${beehiveAction.rating.volksstaerke})"></div>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
+                <div th:replace="beehiveAction/_show :: rating(${beehiveAction.rating})">...</div>
             </div>
             <div class="form-group" th:if="${beehiveAction.addRemove.enabled}">
                 <label class="control-label" th:text="#{beehiveAction.addRemove.label}">Notes</label>

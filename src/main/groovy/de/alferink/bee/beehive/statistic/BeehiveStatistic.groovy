@@ -13,6 +13,5 @@ class BeehiveStatistic {
     Integer numberOfTreatmentsFormicAcid
     Boolean treatmentsWithOxalicAcid
 
-    Rating averageRating
-    AddRemove addRemoveSum
+    AverageRating averageRating
 }

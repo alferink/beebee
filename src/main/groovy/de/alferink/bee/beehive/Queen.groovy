@@ -24,4 +24,9 @@ class Queen extends BaseEntity {
 
     String zeichen
     String belegstelle
+
+    @Override
+    String toString() {
+        "$breed $year" + (zeichen ? " ($zeichen)" : '')
+    }
 }

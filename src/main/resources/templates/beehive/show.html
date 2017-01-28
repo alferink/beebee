@@ -48,8 +48,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label th:text="#{beehive.queen.label}">Color</label>
+                            <div class="controls" th:text="${beehiveState.queen}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label th:text="#{beehive.hiveType.label}">Hive type</label>
                             <div class="controls" th:text="${beehive.hiveType}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{beehive.broodChamberHoneyChamber.label}">...</label>
+                            <div class="controls">
+                                <span th:text="${beehiveState.broodChamber}"></span>
+                                <span th:text="'(' + ${beehiveState.honeyChamber} + ')'"></span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label th:text="#{apiary.label}">Apiary</label>
@@ -69,6 +81,12 @@
 
                 <br/><br/>
 
+                <div class="form-group">
+                    <label th:text="#{beehiveStatistic.statistic.avergeRating.label(${#strings.toString(beehiveStatisticLastYear.year)})}">..</label>
+                    <div class="controls">
+                        <div th:replace="beehiveAction/_show :: rating(${beehiveStatisticLastYear.averageRating})">...</div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label th:text="#{beehiveStatistic.honeyQuantity.label}">honeyQuantity</label>
                     <div class="controls">
