@@ -27,7 +27,12 @@ class CreationController {
 
     @RequestMapping(value = "{id}")
     public String show(@PathVariable String id, Model model) {
-        model.addAttribute("beehiveAction", creationRepository.findOne(id));
+        Creation creation = creationRepository.findOne(id)
+        model.addAttribute("beehiveAction", creation);
+
+        List<BeehiveAction> actions = creation.beehive.allBeehiveActions
+        model.addAttribute("nextBeehiveAction", actions.size() > 1 ? actions.get(actions.size()-2) : null)
+
         return "beehiveAction/show";
     }
 

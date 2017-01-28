@@ -10,13 +10,29 @@
 <nav th:replace="layout :: site-header"/>
 
 <header layout:fragment="header">
-    <ol class="breadcrumb">
-        <li><a th:href="@{/beehive/}" th:text="#{beehive.plural.label}">Beehives</a></li>
-        <li><a th:href="@{'/beehive/' + ${beehiveAction.beehive.id}+ '/'}"
-               th:text="#{beehive.with.name.label(${beehiveAction.beehive.name})}">Beehive</a></li>
-        <li class="active"
-            th:text="#{default.show.label(${beehiveAction.actionType})}"></li>
-    </ol>
+    <div>
+        <ol class="breadcrumb">
+            <li><a th:href="@{/beehive/}" th:text="#{beehive.plural.label}">Beehives</a></li>
+            <li><a th:href="@{'/beehive/' + ${beehiveAction.beehive.id}+ '/'}"
+                   th:text="#{beehive.with.name.label(${beehiveAction.beehive.name})}">Beehive</a></li>
+            <li class="active"
+                th:text="#{default.show.label(${beehiveAction.actionType})}"></li>
+        </ol>
+        <ul class="pager">
+            <li th:if="${lastBeehiveAction}">
+                <a href="#" aria-label="Previous"
+                   th:href="@{'/beehive/' + ${lastBeehiveAction.beehive.id} + '/' + ${lastBeehiveAction.actionType.url} + '/' + ${lastBeehiveAction.id}}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li th:if="${nextBeehiveAction}">
+                <a href="#" aria-label="Next"
+                   th:href="@{'/beehive/' + ${nextBeehiveAction.beehive.id} + '/' + ${nextBeehiveAction.actionType.url} + '/' + ${nextBeehiveAction.id}}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </header>
 
 <section layout:fragment="content">
@@ -38,31 +54,31 @@
                 <table class="table table-condensed">
                     <tr th:if="${beehiveAction.addRemove.broodChamberAdded} or ${beehiveAction.addRemove.broodChamberRemoved}">
                         <td th:text="#{addRemove.broodChamber.label}"></td>
-                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.broodChamberAdded ?: 0}, ${beehiveAction.addRemove.broodChamberRemoved ?: 0})}" />
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.broodChamberAdded ?: 0}, ${beehiveAction.addRemove.broodChamberRemoved ?: 0})}"/>
                     </tr>
                     <tr th:if="${beehiveAction.addRemove.honeyChamberAdded} or ${beehiveAction.addRemove.honeyChamberRemoved}">
                         <td th:text="#{addRemove.honeyChamber.label}"></td>
-                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.honeyChamberAdded ?: 0}, ${beehiveAction.addRemove.honeyChamberRemoved ?: 0})}" />
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.honeyChamberAdded ?: 0}, ${beehiveAction.addRemove.honeyChamberRemoved ?: 0})}"/>
                     </tr>
                     <tr th:if="${beehiveAction.addRemove.mittelwaendeAdded} or ${beehiveAction.addRemove.mittelwaendeRemoved}">
                         <td th:text="#{addRemove.mittelwaende.label}"></td>
-                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.mittelwaendeAdded ?: 0}, ${beehiveAction.addRemove.mittelwaendeRemoved ?: 0})}" />
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.mittelwaendeAdded ?: 0}, ${beehiveAction.addRemove.mittelwaendeRemoved ?: 0})}"/>
                     </tr>
                     <tr th:if="${beehiveAction.addRemove.leerwabenAdded} or ${beehiveAction.addRemove.leerwabenRemoved}">
                         <td th:text="#{addRemove.leerwaben.label}"></td>
-                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.leerwabenAdded ?: 0}, ${beehiveAction.addRemove.leerwabenRemoved ?: 0})}" />
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.leerwabenAdded ?: 0}, ${beehiveAction.addRemove.leerwabenRemoved ?: 0})}"/>
                     </tr>
                     <tr th:if="${beehiveAction.addRemove.brutwabenAdded} or ${beehiveAction.addRemove.brutwabenRemoved}">
                         <td th:text="#{addRemove.brutwaben.label}"></td>
-                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.brutwabenAdded ?: 0}, ${beehiveAction.addRemove.brutwabenRemoved ?: 0})}" />
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.brutwabenAdded ?: 0}, ${beehiveAction.addRemove.brutwabenRemoved ?: 0})}"/>
                     </tr>
                     <tr th:if="${beehiveAction.addRemove.futterwabenAdded} or ${beehiveAction.addRemove.futterwabenRemoved}">
                         <td th:text="#{addRemove.futterwaben.label}"></td>
-                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.futterwabenAdded ?: 0}, ${beehiveAction.addRemove.futterwabenRemoved ?: 0})}" />
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.futterwabenAdded ?: 0}, ${beehiveAction.addRemove.futterwabenRemoved ?: 0})}"/>
                     </tr>
                     <tr th:if="${beehiveAction.addRemove.drohnenwabenAdded} or ${beehiveAction.addRemove.drohnenwabenRemoved}">
                         <td th:text="#{addRemove.drohnenwaben.label}"></td>
-                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.drohnenwabenAdded ?: 0}, ${beehiveAction.addRemove.drohnenwabenRemoved ?: 0})}" />
+                        <td th:text="#{addRemove.value.label(${beehiveAction.addRemove.drohnenwabenAdded ?: 0}, ${beehiveAction.addRemove.drohnenwabenRemoved ?: 0})}"/>
                     </tr>
                 </table>
             </div>

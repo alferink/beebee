@@ -27,7 +27,18 @@ class BeehiveActionController<T extends ChangeBeehiveAction> {
 
     @RequestMapping(value = "{id}")
     public String show(@PathVariable String id, Model model) {
-        model.addAttribute("beehiveAction", beehiveActionRepository.findOne(id));
+        BeehiveAction beehiveAction = beehiveActionRepository.findOne(id)
+        model.addAttribute("beehiveAction", beehiveAction);
+
+        List<BeehiveAction> actions = beehiveAction.beehive.allBeehiveActions
+        int index = actions.indexOf(beehiveAction)
+        if (index > 0) {
+            model.addAttribute("nextBeehiveAction", actions.get(index - 1));
+        }
+        if (index < actions.size() - 1) {
+            model.addAttribute("lastBeehiveAction", actions.get(index + 1));
+        }
+
         return "beehiveAction/show";
     }
 
