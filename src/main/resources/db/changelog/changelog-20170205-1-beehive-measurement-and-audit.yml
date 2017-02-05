@@ -28,7 +28,7 @@ databaseChangeLog:
             constraints:
               nullable: false
             name: PERIOD
-            type: INT(10)
+            type: INTEGER
         - column:
             name: TEMPERATURE_INSIDE
             type: DECIMAL(19, 2)
