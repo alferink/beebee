@@ -7,6 +7,7 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import groovy.transform.CompileStatic
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Sort
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -38,7 +39,8 @@ class BeehiveMeasurementController {
         from = from ?: availableMonths.last()
         till = till ?: datePlusOneMonth(from)
 
-        List<AggregatedBeehiveMeasurement> aggregatedBeehiveMeasurements = aggregatedBeehiveMeasurementRepository.findByBeehiveIdAndDateBetween(beehiveId, from, till)
+        Sort sort = new Sort('date')
+        List<AggregatedBeehiveMeasurement> aggregatedBeehiveMeasurements = aggregatedBeehiveMeasurementRepository.findByBeehiveIdAndDateBetween(beehiveId, from, till, sort)
         aggregatedBeehiveMeasurements.each {
             it.beehive = null
         }

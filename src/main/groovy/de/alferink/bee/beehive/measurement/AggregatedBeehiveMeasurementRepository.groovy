@@ -1,5 +1,6 @@
 package de.alferink.bee.beehive.measurement
 
+import org.springframework.data.domain.Sort
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
 import org.springframework.data.rest.core.annotation.RepositoryRestResource
@@ -11,5 +12,5 @@ interface AggregatedBeehiveMeasurementRepository extends PagingAndSortingReposit
     List<AggregatedBeehiveMeasurement> findByBeehiveId(@Param('beehiveId') String beehiveId)
 
     List<AggregatedBeehiveMeasurement> findByBeehiveIdAndDateBetween(
-            @Param('beehiveId') String beehiveId, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)@Param('from') Date from, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)@Param('till') Date till)
+            @Param('beehiveId') String beehiveId, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)@Param('from') Date from, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)@Param('till') Date till, Sort sort)
 }
