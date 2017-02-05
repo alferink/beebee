@@ -92,12 +92,20 @@
             <div class="box">
                 <h3 th:text="#{beehive.statistic.header(${#strings.toString(beehiveStatistic.year)}, ${#strings.toString(beehiveStatisticLastYear.year)})}"></h3>
 
-                <br/><br/>
+                <div class="toolbar" role="toolbar" aria-label="...">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a href="#"
+                           th:href="@{'/beehive/' + ${beehive.id} + '/beehivemeasurements/'}"
+                           class="btn btn-default"
+                           th:text="#{beehiveBeasurement.plural.label}"></a>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label th:text="#{beehiveStatistic.statistic.avergeRating.label(${#strings.toString(beehiveStatisticLastYear.year)})}">..</label>
                     <div class="controls">
-                        <div th:replace="beehiveAction/_show :: rating(${beehiveStatisticLastYear.averageRating})">...</div>
+                        <div th:replace="beehiveAction/_show :: rating(${beehiveStatisticLastYear.averageRating})">...
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -129,10 +137,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
 
     <div class="box">
         <a name="actions"></a>
@@ -186,13 +191,12 @@
                     <div th:replace="beehiveAction/_summary :: ${beehiveAction.actionType.propertyName}">...</div>
                 </td>
                 <td>
-                    <form class="delete"
+                    <form class="confirm"
                           th:attr="data-confirm-message=#{delete.confirm.message}"
-                        th:action="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/delete/' +
-                        ${beehiveAction.id}}"
-                        method="post">
+                          th:action="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/delete/' + ${beehiveAction.id}}"
+                          method="post">
                         <a th:href="@{'/beehive/' + ${beehive.id} + '/' + ${beehiveAction.actionType.url} + '/edit/' + ${beehiveAction.id} + '/'}"
-                           class="btn btn-warning"  th:text="#{default.button.edit.label}">Edit</a>
+                           class="btn btn-warning" th:text="#{default.button.edit.label}">Edit</a>
                         <button type="submit" class="btn btn-danger" th:text="#{default.button.delete.label}"
                                 th:if="${beehiveAction instanceof T(de.alferink.bee.beehive.action.ChangeBeehiveAction)}">
                             Delete

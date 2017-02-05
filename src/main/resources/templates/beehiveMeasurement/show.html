@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head th:replace="layout :: site-head">
+    <title th:text="#{default.show.label(${beehive})}">BeeBee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="" th:src="@{/js/measurements.js}"></script>
+</head>
+<body>
+
+<nav th:replace="layout :: site-header"/>
+
+<header layout:fragment="header">
+    <ol class="breadcrumb">
+        <li><a th:href="@{/beehive/}" th:text="#{beehive.plural.label}">Beehives</a></li>
+        <li><a th:href="@{'/beehive/' + ${beehive.id}+ '/'}"
+               th:text="#{beehive.with.name.label(${beehive.name})}">Beehive</a></li>
+        <li class="active"
+            th:text="#{default.show.label(#{beehiveBeasurement.plural.label})}"></li>
+    </ol>
+</header>
+
+<section layout:fragment="content">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box">
+                <h3 th:text="#{beehiveBeasurements.with.beehive.label(${beehive.instanceName})}"></h3>
+
+                <form th:action="@{'/beehive/' + ${beehive.id} + '/beehivemeasurements/'}" th:object="${filter}"
+                      method="get" class="form-inline">
+                    <select class="form-control" th:field="*{from}">
+                        <option th:each="date : ${availableMonths}"
+                                th:value="${{date}}"
+                                th:text="${#dates.format(date, 'YYYY MMMM')}">...
+                        </option>
+                    </select>
+                    <button type="submit" class="btn btn-primary" th:text="#{default.button.reload.label}">Save</button>
+                </form>
+                <form th:action="@{'/beehive/' + ${beehive.id} + '/beehivemeasurements/update'}" method="post" class="form-inline confirm" th:attr="data-confirm-message=#{beehiveBeasurements.update.confirm.message}">
+                    <button type="submit" class="btn btn-danger" th:text="#{beehiveBeasurements.button.update.label}">Save</button>
+                </form>
+
+                <br/><br/>
+
+                <div id="measurements" style="width:100%;height:400px;"/>
+
+                <script type="text/javascript" th:inline="javascript">
+                    /*<![CDATA[*/
+                    $(document).ready(function () {
+                        var aggregatedBeehiveMeasurements = /*[[${aggregatedBeehiveMeasurementsMap}]]*/
+                                createMeasurementsDiagram('measurements', aggregatedBeehiveMeasurements)
+                    });
+                    /*]]>*/
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h3 th:text="#{beehiveBeasurement.plural.label}"></h3>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th th:text="#{beehiveBeasurement.date.label}">date</th>
+                    <th class="hidden-xs hidden-sm" th:text="#{beehiveBeasurement.temperatureOutsideMin.label}">
+                        temperatureOutsideMin
+                    </th>
+                    <th class="hidden-xs hidden-sm" th:text="#{beehiveBeasurement.temperatureOutsideMax.label}">
+                        temperatureOutsideMax
+                    </th>
+                    <th th:text="#{beehiveBeasurement.temperatureOutside.label}">temperatureOutside</th>
+                    <th th:text="#{beehiveBeasurement.humidityOutside.label}">humidityOutside</th>
+                    <th th:text="#{beehiveBeasurement.temperatureInside.label}">temperatureInside</th>
+                    <th th:text="#{beehiveBeasurement.weight.label}">weight</th>
+                    <th th:text="#{beehiveBeasurement.weightDifference.label}">weightDifference</th>
+                </tr>
+                <tbody>
+                <tr th:each="aggregatedBeehiveMeasurement: ${aggregatedBeehiveMeasurements}">
+                    <td th:text="${{aggregatedBeehiveMeasurement.date}}">
+                    </td>
+                    <td class="hidden-xs hidden-sm" th:text="${aggregatedBeehiveMeasurement.temperatureOutsideMin}">
+                    </td>
+                    <td class="hidden-xs hidden-sm" th:text="${aggregatedBeehiveMeasurement.temperatureOutsideMax}">
+                    </td>
+                    <td th:text="${aggregatedBeehiveMeasurement.temperatureOutside}">
+                    </td>
+                    <td th:text="${aggregatedBeehiveMeasurement.humidityOutside}">
+                    </td>
+                    <td th:text="${aggregatedBeehiveMeasurement.temperatureInside}">
+                    </td>
+                    <td th:text="${aggregatedBeehiveMeasurement.weight}">
+                    </td>
+                    <td th:text="${aggregatedBeehiveMeasurement.weightDifference}">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

@@ -15,7 +15,7 @@ import javax.validation.Valid
 import java.time.LocalDate
 
 @Controller
-@RequestMapping(value = ['', '/apiary'])
+@RequestMapping(value = ['/apiary'])
 class ApiaryController {
 
     @Autowired

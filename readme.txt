@@ -22,6 +22,13 @@ http://www.liquibase.org/quickstart.html
 https://github.com/stevesaliman/liquibase-workshop
 https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html
 
+---
+Generate DBSkript:
+gradlew diffChangeLog
+
+
+
+
 == libs
 * rating (stars) (https://github.com/kartik-v/bootstrap-star-rating)
 
@@ -38,3 +45,6 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-in
 Icons
 * https://icons8.com/web-app/for/all/honey
 * https://sourceforge.net/projects/openiconlibrary/?source=typ_redirect
+
+== Wetter
+* https://openweathermap.org/

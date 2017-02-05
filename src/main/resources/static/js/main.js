@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $(function () {
-        $('form.delete').submit(function (evt) {
+        $('form.confirm').submit(function (evt) {
             return confirm($(this).data('confirm-message'));
         });
     });

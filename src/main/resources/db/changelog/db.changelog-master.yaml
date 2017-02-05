@@ -3,3 +3,5 @@ databaseChangeLog:
     file: 'db/changelog/changelog-initial.yml'
 - include:
     file: 'db/changelog/changelog-20170122-1-beehive-color.yml'
+- include:
+    file: 'db/changelog/changelog-20170205-1-beehive-measurement-and-audit.yml'

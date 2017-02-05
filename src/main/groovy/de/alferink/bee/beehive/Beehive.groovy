@@ -7,6 +7,7 @@ import de.alferink.bee.beehive.action.BeehiveActionType
 import de.alferink.bee.beehive.action.ChangeBeehiveAction
 import de.alferink.bee.beehive.action.Creation
 import de.alferink.bee.beehive.action.MoveBeehive
+import de.alferink.bee.beehive.measurement.AggregatedBeehiveMeasurement
 import groovy.transform.CompileStatic
 import org.hibernate.annotations.GenericGenerator
 

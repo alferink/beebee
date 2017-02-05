@@ -1,0 +1,258 @@
+databaseChangeLog:
+- changeSet:
+    id: 1486311657498-1
+    author: Joerg (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+             nullable: false
+            name: ID
+            type: VARCHAR(255)
+        - column:
+            name: CREATED_DATE
+            type: TIMESTAMP
+        - column:
+            name: MODIFIED_DATE
+            type: TIMESTAMP
+        - column:
+            constraints:
+              nullable: false
+            name: DATE
+            type: TIMESTAMP
+        - column:
+            name: HUMIDITY_OUTSIDE
+            type: DECIMAL(19, 2)
+        - column:
+            constraints:
+              nullable: false
+            name: PERIOD
+            type: INT(10)
+        - column:
+            name: TEMPERATURE_INSIDE
+            type: DECIMAL(19, 2)
+        - column:
+            name: TEMPERATURE_OUTSIDE
+            type: DECIMAL(19, 2)
+        - column:
+            name: TEMPERATURE_OUTSIDE_MAX
+            type: DECIMAL(19, 2)
+        - column:
+            name: TEMPERATURE_OUTSIDE_MIN
+            type: DECIMAL(19, 2)
+        - column:
+            name: WEIGHT
+            type: DECIMAL(19, 2)
+        - column:
+            name: WEIGHT_DIFFERENCE
+            type: DECIMAL(19, 2)
+        - column:
+            name: BEEHIVE_ID
+            type: VARCHAR(255)
+        tableName: AGGREGATED_BEEHIVE_MEASUREMENT
+- changeSet:
+    id: 1486311657498-2
+    author: Joerg (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: ID
+            type: VARCHAR(255)
+        - column:
+            name: CREATED_DATE
+            type: TIMESTAMP
+        - column:
+            name: MODIFIED_DATE
+            type: TIMESTAMP
+        - column:
+            constraints:
+              nullable: false
+            name: DATE
+            type: TIMESTAMP
+        - column:
+            name: HUMIDITY_OUTSIDE
+            type: DECIMAL(19, 2)
+        - column:
+            name: TEMPERATURE_INSIDE
+            type: DECIMAL(19, 2)
+        - column:
+            name: TEMPERATURE_OUTSIDE
+            type: DECIMAL(19, 2)
+        - column:
+            name: WEIGHT
+            type: DECIMAL(19, 2)
+        - column:
+            constraints:
+              nullable: false
+            name: BEEHIVE_ID
+            type: VARCHAR(255)
+        tableName: RAW_BEEHIVE_MEASUREMENT
+- changeSet:
+    id: 1486311657498-3
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: CREATED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: ADD_REMOVE
+- changeSet:
+    id: 1486311657498-4
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: CREATED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: CHANGE_BEEHIVE_ACTION
+- changeSet:
+    id: 1486311657498-5
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: CREATED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: CREATION
+- changeSet:
+    id: 1486311657498-6
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: CREATED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: QUEEN
+- changeSet:
+    id: 1486311657498-7
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: CREATED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: RATING
+- changeSet:
+    id: 1486311657498-8
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: MODIFIED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: ADD_REMOVE
+- changeSet:
+    id: 1486311657498-9
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: MODIFIED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: CHANGE_BEEHIVE_ACTION
+- changeSet:
+    id: 1486311657498-10
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: MODIFIED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: CREATION
+- changeSet:
+    id: 1486311657498-11
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: MODIFIED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: QUEEN
+- changeSet:
+    id: 1486311657498-12
+    author: Joerg (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: MODIFIED_DATE
+            type: TIMESTAMP(23, 10)
+        tableName: RATING
+- changeSet:
+    id: 1486311657498-13
+    author: Joerg (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: ID
+        constraintName: CONSTRAINT_11
+        tableName: RAW_BEEHIVE_MEASUREMENT
+- changeSet:
+    id: 1486311657498-14
+    author: Joerg (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: ID
+        constraintName: CONSTRAINT_B
+        tableName: AGGREGATED_BEEHIVE_MEASUREMENT
+- changeSet:
+    id: 1486311657498-15
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: BEEHIVE_ID
+        indexName: FK8AKNPGQU5VXLQFEAQXC9FGUNB_INDEX_1
+        tableName: RAW_BEEHIVE_MEASUREMENT
+- changeSet:
+    id: 1486311657498-16
+    author: Joerg (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: BEEHIVE_ID
+        indexName: FKO0KSBAFBBHC51ONXMX344ML1K_INDEX_B
+        tableName: AGGREGATED_BEEHIVE_MEASUREMENT
+- changeSet:
+    id: 1486311657498-17
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: BEEHIVE_ID
+        baseTableName: RAW_BEEHIVE_MEASUREMENT
+        constraintName: FK8AKNPGQU5VXLQFEAQXC9FGUNB
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: BEEHIVE
+- changeSet:
+    id: 1486311657498-18
+    author: Joerg (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: BEEHIVE_ID
+        baseTableName: AGGREGATED_BEEHIVE_MEASUREMENT
+        constraintName: FKO0KSBAFBBHC51ONXMX344ML1K
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: BEEHIVE
+
